@@ -197,7 +197,7 @@ export function CustomFieldsPanel() {
           ) : (
             <Plus className="size-4" />
           )}
-          Add
+          Adicionar
         </Button>
       </div>
 
@@ -210,7 +210,7 @@ export function CustomFieldsPanel() {
           </div>
         ) : fields.length === 0 ? (
           <p className="py-8 text-center text-sm text-muted-foreground">
-            No custom fields yet.
+            Nenhum campo personalizado ainda.
           </p>
         ) : (
           <ul className="divide-y divide-border">

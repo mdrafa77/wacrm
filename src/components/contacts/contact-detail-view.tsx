@@ -478,7 +478,7 @@ export function ContactDetailView({
                   value="custom"
                   className="data-active:bg-muted data-active:text-primary text-muted-foreground"
                 >
-                  Custom Fields
+                  Campos personalizados
                 </TabsTrigger>
                 <TabsTrigger
                   value="deals"

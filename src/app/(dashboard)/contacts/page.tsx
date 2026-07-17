@@ -303,7 +303,7 @@ export default function ContactsPage() {
     if (error) {
       toast.error('Falha ao excluir contatos');
     } else {
-      toast.success(`${ids.length} contact${ids.length === 1 ? '' : 's'} deleted`);
+      toast.success(`${ids.length} contato${ids.length === 1 ? '' : 's'} excluído${ids.length === 1 ? '' : 's'}`);
       setSelected(new Set());
       fetchContacts();
     }
@@ -344,7 +344,7 @@ export default function ContactsPage() {
         <div>
           <h1 className="text-2xl font-bold text-foreground">Contatos</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Manage your contact list. {totalCount > 0 && `${totalCount} total contacts.`}
+            Gerencie sua lista de contatos. {totalCount > 0 && `${totalCount} contato${totalCount === 1 ? '' : 's'} no total.`}
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -355,27 +355,27 @@ export default function ContactsPage() {
               className="border-border text-muted-foreground hover:bg-muted"
             >
               <SlidersHorizontal className="size-4" />
-              Custom fields
+              Campos personalizados
             </Button>
           )}
           <GatedButton
             variant="outline"
             canAct={canEdit}
-            gateReason="add or import contacts"
+            gateReason="adicionar ou importar contatos"
             onClick={() => setImportOpen(true)}
             className="border-border text-muted-foreground hover:bg-muted"
           >
             <Upload className="size-4" />
-            Import
+            Importar
           </GatedButton>
           <GatedButton
             canAct={canEdit}
-            gateReason="add or import contacts"
+            gateReason="adicionar ou importar contatos"
             onClick={openAddForm}
             className="bg-primary hover:bg-primary/90 text-primary-foreground"
           >
             <Plus className="size-4" />
-            Add Contact
+            Adicionar contato
           </GatedButton>
         </div>
       </div>
@@ -393,7 +393,7 @@ export default function ContactsPage() {
                 // set shrinks/grows, page N may no longer be valid.
                 setPage(0);
               }}
-              placeholder="Search by name, phone, or email..."
+              placeholder="Buscar por nome, telefone ou e-mail..."
               className="pl-8 bg-card border-border text-foreground placeholder:text-muted-foreground"
             />
           </div>
@@ -408,7 +408,7 @@ export default function ContactsPage() {
               }
             >
               <Filter className="size-4" />
-              Filter by tags
+              Filtrar por etiquetas
               {selectedTagIds.length > 0 && (
                 <span className="ml-1 inline-flex items-center justify-center rounded-full bg-primary px-1.5 text-[10px] font-semibold text-primary-foreground">
                   {selectedTagIds.length}
@@ -418,14 +418,14 @@ export default function ContactsPage() {
             <PopoverContent align="start" className="w-64 p-0">
               <div className="flex items-center justify-between px-3 py-2 border-b border-border">
                 <span className="text-sm font-medium text-popover-foreground">
-                  Filter by tags
+                  Filtrar por etiquetas
                 </span>
                 {selectedTagIds.length > 0 && (
                   <button
                     onClick={clearTagFilters}
                     className="text-xs text-muted-foreground hover:text-foreground"
                   >
-                    Clear all
+                    Limpar tudo
                   </button>
                 )}
               </div>
@@ -443,7 +443,7 @@ export default function ContactsPage() {
                       <Checkbox
                         checked={selectedTagIds.includes(tag.id)}
                         onCheckedChange={() => toggleTagFilter(tag.id)}
-                        aria-label={`Filter by ${tag.name}`}
+                        aria-label={`Filtrar por ${tag.name}`}
                       />
                       <span
                         className="size-2.5 shrink-0 rounded-full"
@@ -516,11 +516,11 @@ export default function ContactsPage() {
               variant="destructive"
               size="sm"
               canAct={canEdit}
-              gateReason="delete contacts"
+              gateReason="excluir contatos"
               onClick={() => setBulkDeleteOpen(true)}
             >
               <Trash2 className="size-4" />
-              Delete selected
+              Excluir selecionados
             </GatedButton>
           </div>
         </div>
@@ -577,7 +577,7 @@ export default function ContactsPage() {
                         className="mt-2 border-border text-muted-foreground hover:bg-muted"
                       >
                         <Plus className="size-3.5" />
-                        Add your first contact
+                        Adicionar meu primeiro contato
                       </Button>
                     )}
                   </div>
@@ -667,7 +667,7 @@ export default function ContactsPage() {
                           className="text-popover-foreground focus:bg-muted focus:text-foreground"
                         >
                           <Pencil className="size-4" />
-                          Edit
+                          Editar
                         </DropdownMenuItem>
                         <DropdownMenuSeparator className="bg-border" />
                         <DropdownMenuItem
@@ -678,7 +678,7 @@ export default function ContactsPage() {
                           }}
                         >
                           <Trash2 className="size-4" />
-                          Delete
+                          Excluir
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -781,7 +781,7 @@ export default function ContactsPage() {
               onClick={() => setDeleteConfirmOpen(false)}
               className="border-border text-muted-foreground hover:bg-muted"
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               variant="destructive"
@@ -789,7 +789,7 @@ export default function ContactsPage() {
               disabled={deleting}
             >
               {deleting && <Loader2 className="size-4 animate-spin" />}
-              Delete
+              Excluir
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -824,7 +824,7 @@ export default function ContactsPage() {
               disabled={deleting}
             >
               {deleting && <Loader2 className="size-4 animate-spin" />}
-              Delete
+              Excluir
             </Button>
           </DialogFooter>
         </DialogContent>

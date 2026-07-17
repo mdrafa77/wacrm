@@ -285,7 +285,7 @@ export function ContactForm({
                       onClick={() => onViewExisting(dupMatch.contact.id)}
                       className="font-medium underline underline-offset-2 hover:no-underline"
                     >
-                      View {dupMatch.contact.name || dupMatch.contact.phone}
+                      Ver {dupMatch.contact.name || dupMatch.contact.phone}
                     </button>
                   )}
                 </div>
@@ -313,7 +313,7 @@ export function ContactForm({
 
           <div className="space-y-2">
             <Label htmlFor="cf-company" className="text-muted-foreground">
-              Company
+              Empresa
             </Label>
             <Input
               id="cf-company"
@@ -370,7 +370,7 @@ export function ContactForm({
               onClick={() => onOpenChange(false)}
               className="border-border text-muted-foreground hover:bg-muted"
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               type="submit"

@@ -342,7 +342,7 @@ export function ImportModal({
       setResult({ imported, skipped, failed, tagsAssigned });
       if (imported > 0) {
         toast.success(
-          `${imported} contact${imported !== 1 ? 's' : ''} imported`
+          `${imported} contato${imported !== 1 ? 's' : ''} importado${imported !== 1 ? 's' : ''}`
         );
         onImported();
       }
@@ -364,7 +364,7 @@ export function ImportModal({
       }
       if (failed > 0) {
         toast.error(
-          `${failed} contact${failed !== 1 ? 's' : ''} failed to import`
+          `Falha ao importar ${failed} contato${failed !== 1 ? 's' : ''}`
         );
       }
     } catch (err: unknown) {
@@ -402,7 +402,7 @@ export function ImportModal({
         <div className="shrink-0 space-y-4 border-b border-border/80 px-6 pt-6 pb-5">
           <DialogHeader className="gap-1.5">
             <DialogTitle className="text-lg text-popover-foreground">
-              Import Contacts
+              Importar contatos
             </DialogTitle>
             <DialogDescription className="leading-relaxed text-muted-foreground">
               Envie um arquivo CSV com a coluna obrigatória{' '}
@@ -496,7 +496,7 @@ export function ImportModal({
                     <span className="inline-flex items-center gap-1 rounded-md bg-muted/90 px-2 py-0.5 text-[11px] text-muted-foreground">
                       <Tag className="text-primary/80 size-3" />
                       {tagStats.unique} tag{tagStats.unique !== 1 ? 's' : ''} ·{' '}
-                      {tagStats.rowsWithTags} contact
+                      {tagStats.rowsWithTags} contato
                       {tagStats.rowsWithTags !== 1 ? 's' : ''}
                     </span>
                   )}
@@ -519,7 +519,7 @@ export function ImportModal({
                         </th>
                         {previewHasCompany && (
                           <th className="px-3 py-2 text-left font-medium whitespace-nowrap text-muted-foreground">
-                            Company
+                            Empresa
                           </th>
                         )}
                         {previewHasTags && (
@@ -637,7 +637,7 @@ export function ImportModal({
               className="bg-primary hover:bg-primary/90 text-primary-foreground"
             >
               {importing && <Loader2 className="size-4 animate-spin" />}
-              Import {parsedRows.length > 0 ? parsedRows.length : ''} contact
+              Importar {parsedRows.length > 0 ? parsedRows.length : ''} contato
               {parsedRows.length !== 1 ? 's' : ''}
             </Button>
           )}
