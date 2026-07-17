@@ -228,3 +228,22 @@ html[data-theme="rose"] {
     @apply font-sans;
   }
 }
+
+/* The wordmark ships in light/dark variants. Keep its transparent
+ * background and swap the artwork with the app's explicit mode rather
+ * than the operating-system preference. */
+.app-logo-black {
+  display: none;
+}
+
+.app-logo-white {
+  display: block;
+}
+
+html[data-mode="light"] .app-logo-black {
+  display: block;
+}
+
+html[data-mode="light"] .app-logo-white {
+  display: none;
+}
