@@ -251,7 +251,7 @@ export function Step2SelectAudience({
       <div>
         <h2 className="text-lg font-semibold text-foreground">Selecionar público</h2>
         <p className="mt-1 text-sm text-muted-foreground">
-          Choose who will receive this broadcast.
+          Escolha quem receberá esta campanha.
         </p>
       </div>
 
@@ -346,7 +346,7 @@ export function Step2SelectAudience({
             <Loader2 className="h-5 w-5 animate-spin text-primary" />
           ) : customFields.length === 0 ? (
             <p className="text-xs text-muted-foreground">
-              No custom fields defined. Create one in Settings → Custom Fields.
+              Nenhum campo personalizado definido. Crie um em Configurações → Campos personalizados.
             </p>
           ) : (
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-[minmax(0,1fr)_140px_minmax(0,1fr)]">
@@ -444,7 +444,7 @@ export function Step2SelectAudience({
           </div>
         ) : (
           <p className="text-xs text-muted-foreground">
-            Select an audience type to see the estimate.
+            Selecione um tipo de público para ver a estimativa.
           </p>
         )}
       </div>
@@ -456,14 +456,14 @@ export function Step2SelectAudience({
           className="border-border text-muted-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back
+          Voltar
         </Button>
         <Button
           onClick={onNext}
           disabled={!isValid}
           className="bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
         >
-          Next
+          Avançar
           <ArrowRight className="h-4 w-4" />
         </Button>
       </div>

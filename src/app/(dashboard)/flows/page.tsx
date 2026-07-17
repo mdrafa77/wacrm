@@ -210,17 +210,17 @@ export default function FlowsPage() {
             </span>
           </div>
           <p className="mt-1 text-sm text-muted-foreground">
-            Build branching, button-driven WhatsApp conversations. Useful for
-            menus, FAQs, and triage before a human steps in.
+            Crie conversas ramificadas no WhatsApp, guiadas por botões. Ideal para
+            menus, perguntas frequentes e triagem antes do atendimento humano.
           </p>
         </div>
         <GatedButton
           canAct={canCreate}
-          gateReason="create flows"
+          gateReason="criar fluxos"
           onClick={() => setCreateOpen(true)}
         >
           <Plus className="h-4 w-4" />
-          New flow
+          Novo fluxo
         </GatedButton>
       </header>
 
@@ -279,7 +279,7 @@ export default function FlowsPage() {
                         {t.description}
                       </span>
                       <span className="mt-auto border-t border-border pt-2 text-[11px] text-muted-foreground">
-                        {t.node_count} {t.node_count === 1 ? "node" : "nodes"}
+                        {t.node_count} {t.node_count === 1 ? "nó" : "nós"}
                       </span>
                     </button>
                   );
@@ -290,7 +290,7 @@ export default function FlowsPage() {
 
           <div className="space-y-2 border-t border-border pt-4">
             <p className="text-xs uppercase tracking-wide text-muted-foreground">
-              Or start blank
+              Ou comece do zero
             </p>
             <Input
               value={newName}
@@ -309,11 +309,11 @@ export default function FlowsPage() {
               onClick={() => setCreateOpen(false)}
               disabled={creating}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button onClick={handleCreate} disabled={!newName.trim() || creating}>
               {creating && <Loader2 className="h-4 w-4 animate-spin" />}
-              Create blank flow
+              Criar fluxo vazio
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -335,21 +335,21 @@ function EmptyState({
         <Workflow className="h-6 w-6 text-muted-foreground" />
       </div>
       <h2 className="mt-4 text-base font-medium text-foreground">
-        No flows yet
+        Nenhum fluxo ainda
       </h2>
       <p className="mt-1 max-w-md text-sm text-muted-foreground">
-        Build your first conversation — a welcome menu, an order lookup, an FAQ
-        bot. Customers tap buttons; the bot routes them to the right answer (or
-        the right agent).
+        Crie sua primeira conversa — um menu de boas-vindas, uma consulta de pedido
+        ou um bot de perguntas frequentes. Os clientes tocam nos botões e o bot os
+        direciona para a resposta ou atendente correto.
       </p>
       <GatedButton
         canAct={canCreate}
-        gateReason="create flows"
+        gateReason="criar fluxos"
         onClick={onCreate}
         className="mt-5"
       >
         <Plus className="h-4 w-4" />
-        Create your first flow
+        Criar meu primeiro fluxo
       </GatedButton>
     </div>
   );

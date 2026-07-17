@@ -65,7 +65,7 @@ export function ConversationsChart({ series, loading, range, onRangeChange }: Co
                   : 'text-muted-foreground hover:text-foreground',
               )}
             >
-              {r} days
+              {r} dias
             </button>
           ))}
         </div>
@@ -86,8 +86,8 @@ export function ConversationsChart({ series, loading, range, onRangeChange }: Co
       </div>
 
       <footer className="flex items-center gap-4 border-t border-border px-5 py-3 text-xs text-muted-foreground">
-        <LegendDot color="#3b82f6" label="Incoming" />
-        <LegendDot color="#7c3aed" label="Outgoing" />
+        <LegendDot color="#3b82f6" label="Recebidas" />
+        <LegendDot color="#7c3aed" label="Enviadas" />
       </footer>
     </section>
   )

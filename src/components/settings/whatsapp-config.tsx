@@ -501,7 +501,7 @@ export function WhatsAppConfig() {
                     &quot;{lastRegistrationError}&quot;
                   </span>
                   . Enter (or correct) the 2-step PIN below and click
-                  Salvar configuração to retry.
+                  Salve a configuração para tentar novamente.
                 </>
               ) : (
                 <>
@@ -613,13 +613,13 @@ export function WhatsAppConfig() {
             <div className="space-y-2">
               <Label className="text-muted-foreground">Token de verificação do webhook</Label>
               <Input
-                placeholder="Create a custom verify token"
+                placeholder="Crie um token de verificação personalizado"
                 value={verifyToken}
                 onChange={(e) => setVerifyToken(e.target.value)}
                 className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
               />
               <p className="text-xs text-muted-foreground">
-                A custom string you create. Must match the token you set in Meta webhook settings.
+                Uma sequência personalizada criada por você. Deve ser igual ao token configurado no webhook da Meta.
               </p>
             </div>
 
@@ -761,7 +761,7 @@ export function WhatsAppConfig() {
                 <AccordionTrigger className="text-muted-foreground hover:text-foreground hover:no-underline">
                   <span className="flex items-center gap-2">
                     <span className="flex size-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
-                    Create a Meta App
+                    Criar um aplicativo na Meta
                   </span>
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">

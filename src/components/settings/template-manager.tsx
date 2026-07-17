@@ -499,7 +499,7 @@ export function TemplateManager() {
             </Button>
             <Button onClick={openCreate}>
               <Plus className="size-4" />
-              New Template
+              Novo modelo
             </Button>
           </div>
         }
@@ -510,7 +510,7 @@ export function TemplateManager() {
           <CardContent className="flex flex-col items-center justify-center py-12 text-center">
             <p className="text-muted-foreground text-sm">Nenhum modelo ainda.</p>
             <p className="text-muted-foreground text-xs mt-1">
-              Create your first message template to get started.
+              Crie seu primeiro modelo de mensagem para começar.
             </p>
           </CardContent>
         </Card>
@@ -577,11 +577,11 @@ export function TemplateManager() {
                         size="sm"
                         onClick={() => openEdit(template)}
                         title="Editing triggers Meta re-review — status flips to PENDING."
-                        aria-label="Edit template"
+                        aria-label="Editar modelo"
                         className="text-muted-foreground hover:text-primary hover:bg-primary/10 h-8 px-2"
                       >
                         <Pencil className="size-3.5" />
-                        Edit
+                        Editar
                       </Button>
                     )}
                     {(statusKey === 'REJECTED' || statusKey === 'PAUSED') && (
@@ -589,8 +589,8 @@ export function TemplateManager() {
                         variant="ghost"
                         size="sm"
                         onClick={() => openEdit(template)}
-                        title="Edit the template and resubmit to Meta for review."
-                        aria-label="Edit and resubmit template"
+                        title="Edite o modelo e reenvie-o à Meta para análise."
+                        aria-label="Editar e reenviar modelo"
                         className="text-muted-foreground hover:text-primary hover:bg-primary/10 h-8 px-2"
                       >
                         <RotateCcw className="size-3.5" />
@@ -831,7 +831,7 @@ export function TemplateManager() {
                         ) : (
                           <Upload className="h-3.5 w-3.5" />
                         )}
-                        Upload image
+                        Enviar imagem
                       </Button>
                       <span className="text-[11px] text-muted-foreground">
                         JPEG or PNG, ≤5 MB
@@ -1066,7 +1066,7 @@ export function TemplateManager() {
               onClick={() => setDialogOpen(false)}
               className="border-border text-muted-foreground hover:bg-muted"
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               onClick={handleSubmit}
@@ -1113,7 +1113,7 @@ export function TemplateManager() {
               disabled={deletingId !== null}
               className="border-border text-muted-foreground hover:bg-muted"
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               onClick={confirmDelete}

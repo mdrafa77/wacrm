@@ -405,7 +405,7 @@ export function ImportModal({
               Import Contacts
             </DialogTitle>
             <DialogDescription className="leading-relaxed text-muted-foreground">
-              Upload a CSV with a required{' '}
+              Envie um arquivo CSV com a coluna obrigatória{' '}
               <code className="rounded bg-muted px-1 py-0.5 text-[11px] text-muted-foreground">
                 phone
               </code>{' '}
@@ -466,7 +466,7 @@ export function ImportModal({
                   <Upload className="size-5 text-muted-foreground group-hover:text-foreground" />
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Click to choose a CSV file
+                  Clique para escolher um arquivo CSV
                 </p>
                 <p className="text-[11px] text-muted-foreground">
                   .csv up to your browser limit

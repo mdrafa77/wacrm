@@ -162,17 +162,17 @@ export default function AutomationsPage() {
         <div>
           <h1 className="text-2xl font-bold text-foreground">Automações</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Build workflows that react to WhatsApp® events automatically.
+            Crie fluxos de trabalho que reagem automaticamente aos eventos do WhatsApp®.
           </p>
         </div>
         <GatedButton
           canAct={canCreate}
-          gateReason="create automations"
+          gateReason="criar automações"
           onClick={() => router.push("/automations/new")}
           className="bg-primary text-primary-foreground hover:bg-primary/90"
         >
           <Plus className="h-4 w-4" />
-          Create Automation
+          Criar automação
         </GatedButton>
       </div>
 
@@ -232,9 +232,9 @@ export default function AutomationsPage() {
           <DialogHeader>
             <DialogTitle>Excluir automação</DialogTitle>
             <DialogDescription>
-              This permanently removes{" "}
-              <span className="text-foreground">{pendingDelete?.name}</span> and its execution
-              history. This cannot be undone.
+              Isso excluirá permanentemente{" "}
+              <span className="text-foreground">{pendingDelete?.name}</span> e seu histórico de
+              execuções. Essa ação não pode ser desfeita.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
@@ -243,7 +243,7 @@ export default function AutomationsPage() {
               onClick={() => setPendingDelete(null)}
               disabled={deleting}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               variant="destructive"
@@ -251,7 +251,7 @@ export default function AutomationsPage() {
               disabled={deleting}
             >
               {deleting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
-              Delete
+              Excluir
             </Button>
           </DialogFooter>
         </DialogContent>

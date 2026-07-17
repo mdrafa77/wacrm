@@ -124,7 +124,7 @@ export default function DashboardPage() {
       <div>
         <h1 className="text-2xl font-bold text-foreground">Painel</h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Live analytics across conversations, contacts, deals, broadcasts, and automations.
+          Análises em tempo real de conversas, contatos, oportunidades, campanhas e automações.
         </p>
       </div>
 
@@ -152,7 +152,7 @@ export default function DashboardPage() {
                   metrics.newContactsToday.current - metrics.newContactsToday.previous,
                 label: deltaLabel(
                   metrics.newContactsToday.current - metrics.newContactsToday.previous,
-                  'vs yesterday',
+                  'em comparação com ontem',
                 ),
               }}
             />
@@ -171,7 +171,7 @@ export default function DashboardPage() {
                   metrics.messagesSentToday.current - metrics.messagesSentToday.previous,
                 label: deltaLabel(
                   metrics.messagesSentToday.current - metrics.messagesSentToday.previous,
-                  'vs yesterday',
+                  'em comparação com ontem',
                 ),
               }}
             />
@@ -219,7 +219,7 @@ export default function DashboardPage() {
 // ------------------------------------------------------------
 
 function deltaLabel(delta: number, suffix: string): string {
-  if (delta === 0) return `No change ${suffix}`
+  if (delta === 0) return `Sem alteração ${suffix}`
   const sign = delta > 0 ? '+' : ''
   return `${sign}${delta.toLocaleString()} ${suffix}`
 }

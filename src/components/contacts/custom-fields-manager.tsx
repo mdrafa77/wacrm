@@ -152,7 +152,7 @@ export function CustomFieldsPanel() {
   async function handleDelete(field: CustomField) {
     if (
       !window.confirm(
-        `Delete "${field.field_name}"? This also removes its stored value on every contact. This cannot be undone.`
+        `Excluir "${field.field_name}"? Isso também removerá o valor armazenado em todos os contatos. Essa ação não pode ser desfeita.`
       )
     ) {
       return;

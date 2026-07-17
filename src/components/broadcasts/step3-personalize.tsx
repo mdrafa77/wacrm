@@ -269,7 +269,7 @@ export function Step3Personalize({
           />
           <p className="mt-1.5 text-xs text-muted-foreground">
             Public URL of the {mediaHeaderType} sent as the message header.
-            Used for every recipient in this broadcast.
+            Usado para todos os destinatários desta campanha.
           </p>
           {mediaHeaderType === 'image' &&
             headerMediaError === null &&
@@ -444,14 +444,14 @@ export function Step3Personalize({
           className="border-border text-muted-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back
+          Voltar
         </Button>
         <Button
           onClick={onNext}
           disabled={unmappedKeys.length > 0 || headerMediaError !== null}
           className="bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
         >
-          Next
+          Avançar
           <ArrowRight className="h-4 w-4" />
         </Button>
       </div>

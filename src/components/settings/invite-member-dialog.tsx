@@ -50,8 +50,8 @@ interface InviteMemberDialogProps {
 
 const EXPIRY_OPTIONS: { value: string; label: string }[] = [
   { value: '1', label: '1 day' },
-  { value: '7', label: '7 days' },
-  { value: '30', label: '30 days' },
+  { value: '7', label: '7 dias' },
+  { value: '30', label: '30 dias' },
 ];
 
 const ROLE_DESCRIPTIONS: Record<InviteRole, string> = {
@@ -170,7 +170,7 @@ export function InviteMemberDialog({
     // for users in multi-team contexts where "our wacrm account"
     // wouldn't be enough to disambiguate.
     const accountName = result?.accountName ?? 'our wacrm account';
-    const message = `Join ${accountName} on wacrm using this link (valid for ${result?.expiresInDays} days): ${url}`;
+    const message = `Entre na equipe ${accountName} no KenzyCRM usando este link (válido por ${result?.expiresInDays} dias): ${url}`;
     return `https://wa.me/?text=${encodeURIComponent(message)}`;
   }
 
@@ -194,7 +194,7 @@ export function InviteMemberDialog({
                 Convite criado
               </DialogTitle>
               <DialogDescription className="text-muted-foreground">
-                Share this link with your new teammate. They&apos;ll be able
+                Compartilhe este link com o novo membro da equipe. Ele poderá
                 to sign up (or sign in) and join the account as{' '}
                 <span className="font-medium text-muted-foreground">{result.role}</span>
                 . The link is valid for{' '}
@@ -233,9 +233,9 @@ export function InviteMemberDialog({
                 <strong className="font-semibold text-amber-100">
                   Salve este link agora.
                 </strong>{' '}
-                We never store the plaintext — once you close this dialog
-                the URL is gone. To re-share, revoke this invite and create
-                a new one.
+                O link não é armazenado em texto simples. Ao fechar esta janela,
+                ele não poderá ser exibido novamente. Para compartilhar outra vez,
+                revogue este convite e crie um novo.
               </div>
 
               {/* Anchor styled with `buttonVariants` rather than wrapping
@@ -342,7 +342,7 @@ export function InviteMemberDialog({
                 onClick={() => onOpenChange(false)}
                 className="border-border text-muted-foreground hover:bg-muted"
               >
-                Cancel
+                Cancelar
               </Button>
               <Button
                 onClick={handleCreate}

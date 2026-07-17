@@ -80,7 +80,7 @@ export function DealsSettings() {
             Default currency
           </CardTitle>
           <CardDescription className="text-muted-foreground">
-            New deals default to this currency, and pipeline and
+            Novas oportunidades usarão esta moeda, assim como o funil e os
             dashboard totals are shown in it. Existing deals keep the
             currency they were saved with.
           </CardDescription>

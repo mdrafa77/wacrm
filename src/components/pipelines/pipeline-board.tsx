@@ -217,7 +217,7 @@ function StageColumn({
       />
       <div className="flex items-center justify-between pt-3">
         <h3 className="truncate text-sm font-semibold text-foreground">
-          {stage.name}
+          {translateStageName(stage.name)}
         </h3>
         <span className="shrink-0 rounded-full bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
           {deals.length}
@@ -237,7 +237,7 @@ function StageColumn({
       >
         {deals.length === 0 ? (
           <div className="flex flex-1 items-center justify-center rounded-lg border-2 border-dashed border-border py-10 text-xs text-muted-foreground">
-            Drop a deal here
+            Solte uma oportunidade aqui
           </div>
         ) : (
           deals.map((deal) => (
@@ -262,6 +262,18 @@ function StageColumn({
       </Button>
     </div>
   );
+}
+
+function translateStageName(name: string): string {
+  const names: Record<string, string> = {
+    "New Lead": "Novo lead",
+    Qualified: "Qualificado",
+    "Proposal Sent": "Proposta enviada",
+    Negotiation: "Negociação",
+    Won: "Ganha",
+    Lost: "Perdida",
+  };
+  return names[name] ?? name;
 }
 
 function DraggableDealCard({
