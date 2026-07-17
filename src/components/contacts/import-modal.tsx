@@ -173,7 +173,7 @@ export function ImportModal({
 
     if (rows.length === 0) {
       toast.error(
-        'No valid rows found. Ensure CSV has a "phone" column header.'
+        'Nenhuma linha válida encontrada. Verifique se o CSV possui uma coluna chamada "phone".'
       );
       setParsedRows([]);
       setHasTagsColumn(false);
@@ -212,9 +212,9 @@ export function ImportModal({
         data: { session },
       } = await supabase.auth.getSession();
       const user = session?.user;
-      if (!user) throw new Error('Not authenticated');
+      if (!user) throw new Error('Não autenticado');
       if (!accountId)
-        throw new Error('Your profile is not linked to an account.');
+        throw new Error('Seu perfil não está vinculado a uma conta.');
 
       let imported = 0;
       let skipped = 0;
@@ -588,7 +588,7 @@ export function ImportModal({
 
           {result && (
             <div className="rounded-xl border border-border bg-background/50 p-4">
-              <p className="text-sm font-medium text-popover-foreground">Import complete</p>
+              <p className="text-sm font-medium text-popover-foreground">Importação concluída</p>
               <div className="mt-3 flex flex-wrap gap-3">
                 {result.imported > 0 && (
                   <div className="text-primary flex items-center gap-1.5 text-sm">
@@ -627,7 +627,7 @@ export function ImportModal({
             onClick={() => handleOpenChange(false)}
             className="border-border text-muted-foreground hover:bg-muted"
           >
-            {result ? 'Close' : 'Cancel'}
+            {result ? 'Fechar' : 'Cancelar'}
           </Button>
           {!result && (
             <Button

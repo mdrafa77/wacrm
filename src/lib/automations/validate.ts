@@ -55,12 +55,12 @@ function validateOne(step: StepLike, path: string, issues: ValidationIssue[]): v
   switch (step.step_type) {
     case 'send_message':
       if (!nonEmpty(c.text)) {
-        issues.push({ path: `${path}.text`, message: 'message text is required' })
+        issues.push({ path: `${path}.text`, message: 'o texto da mensagem é obrigatório' })
       }
       break
     case 'send_template':
       if (!nonEmpty(c.template_name)) {
-        issues.push({ path: `${path}.template_name`, message: 'template name is required' })
+        issues.push({ path: `${path}.template_name`, message: 'o nome do modelo é obrigatório' })
       }
       break
     case 'add_tag':
@@ -87,7 +87,7 @@ function validateOne(step: StepLike, path: string, issues: ValidationIssue[]): v
       break
     case 'create_deal':
       if (!nonEmpty(c.pipeline_id)) {
-        issues.push({ path: `${path}.pipeline_id`, message: 'pipeline is required' })
+        issues.push({ path: `${path}.pipeline_id`, message: 'o funil é obrigatório' })
       }
       if (!nonEmpty(c.stage_id)) {
         issues.push({ path: `${path}.stage_id`, message: 'stage is required' })
@@ -150,9 +150,9 @@ export function validateTriggerForActivation(
   if (triggerType === 'keyword_match') {
     const k = cfg.keywords
     if (!Array.isArray(k) || k.length === 0) {
-      issues.push({ path: 'trigger.keywords', message: 'at least one keyword is required' })
+      issues.push({ path: 'trigger.keywords', message: 'é necessária pelo menos uma palavra-chave' })
     } else if (k.some((v) => typeof v !== 'string' || v.trim() === '')) {
-      issues.push({ path: 'trigger.keywords', message: 'keywords cannot be empty strings' })
+      issues.push({ path: 'trigger.keywords', message: 'as palavras-chave não podem estar vazias' })
     }
     // A missing match_type defaults to "contains" at runtime (see
     // automations/engine.ts and flows/engine.ts, which both read
@@ -168,11 +168,11 @@ export function validateTriggerForActivation(
     }
   } else if (triggerType === 'time_based') {
     if (!nonEmpty(cfg.schedule)) {
-      issues.push({ path: 'trigger.schedule', message: 'schedule is required' })
+      issues.push({ path: 'trigger.schedule', message: 'a programação é obrigatória' })
     }
   } else if (triggerType === 'tag_added') {
     if (!nonEmpty(cfg.tag_id)) {
-      issues.push({ path: 'trigger.tag_id', message: 'tag is required' })
+      issues.push({ path: 'trigger.tag_id', message: 'a etiqueta é obrigatória' })
     }
   }
 

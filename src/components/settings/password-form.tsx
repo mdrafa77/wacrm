@@ -32,7 +32,7 @@ export function PasswordForm() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!profile?.email) {
-      toast.error('Cannot change password without a current email');
+      toast.error('Não é possível alterar a senha sem um e-mail atual');
       return;
     }
     if (next.length < MIN_PASSWORD) {
@@ -40,7 +40,7 @@ export function PasswordForm() {
       return;
     }
     if (next !== confirm) {
-      setConfirmError('New password and confirmation do not match');
+      setConfirmError('A nova senha e a confirmação não coincidem');
       return;
     }
     setConfirmError(null);
@@ -56,7 +56,7 @@ export function PasswordForm() {
         password: current,
       });
       if (signInError) {
-        toast.error('Current password is incorrect');
+        toast.error('A senha atual está incorreta');
         return;
       }
 
@@ -71,7 +71,7 @@ export function PasswordForm() {
       setCurrent('');
       setNext('');
       setConfirm('');
-      toast.success('Password updated');
+      toast.success('Senha atualizada');
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Unknown error';
       toast.error(msg);
@@ -160,7 +160,7 @@ export function PasswordForm() {
                   Updating…
                 </>
               ) : (
-                'Update password'
+                'Atualizar senha'
               )}
             </Button>
           </div>

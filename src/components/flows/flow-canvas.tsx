@@ -14,7 +14,7 @@
  *     "true" / "false", list row title) so a branching flow reads
  *     as a real decision tree.
  *   - Click a node → side-sheet opens with the same per-node form
- *     the list view uses, plus "Set as entry" / "Delete".
+ *     the list view uses, plus "Set as entry" / "Excluir".
  *   - Drag from a source handle on one node to a target handle on
  *     another → wires that slot's `next_node_key`. Per-slot handles
  *     for multi-outgoing types (condition, send_buttons, send_list)
@@ -507,7 +507,7 @@ function FlowCanvasInner() {
   if (rfNodes.length === 0) {
     return (
       <div className="text-muted-foreground flex h-full flex-col items-center justify-center gap-3 text-sm">
-        <p>No nodes yet.</p>
+        <p>Nenhum bloco ainda.</p>
         <CanvasAddNodeButton />
       </div>
     );
@@ -531,7 +531,7 @@ function FlowCanvasInner() {
           onEdgesDelete={handleEdgesDelete}
           // Default is "Backspace" only — accept both so Mac users
           // hitting Delete (Fn+Backspace) get the same behavior.
-          deleteKeyCode={['Backspace', 'Delete']}
+          deleteKeyCode={['Backspace', 'Excluir']}
           nodesConnectable={true}
           edgesFocusable={true}
           elementsSelectable={true}
@@ -727,7 +727,7 @@ function CanvasAddNodeButton() {
     <DropdownMenu>
       <DropdownMenuTrigger
         className="bg-primary text-primary-foreground hover:bg-primary-hover inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-[13px] font-medium shadow-[0_6px_20px_-8px_rgba(0,0,0,0.5)] transition-colors"
-        aria-label="Add node"
+        aria-label="Adicionar bloco"
       >
         <Plus className="h-4 w-4" />
         Add node

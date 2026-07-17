@@ -40,7 +40,7 @@ export function Step1ChooseTemplate({ selectedTemplate, onSelect, onNext, onBack
         if (fetchError) throw fetchError;
         setTemplates(data ?? []);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load templates');
+        setError(err instanceof Error ? err.message : 'Falha ao carregar os modelos');
       } finally {
         setLoading(false);
       }
@@ -68,7 +68,7 @@ export function Step1ChooseTemplate({ selectedTemplate, onSelect, onNext, onBack
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-lg font-semibold text-foreground">Choose a Template</h2>
+        <h2 className="text-lg font-semibold text-foreground">Escolher um modelo</h2>
         <p className="mt-1 text-sm text-muted-foreground">
           Select an approved message template for your broadcast.
         </p>
@@ -77,8 +77,8 @@ export function Step1ChooseTemplate({ selectedTemplate, onSelect, onNext, onBack
       {templates.length === 0 ? (
         <div className="flex h-48 flex-col items-center justify-center rounded-xl border border-border bg-card/50">
           <FileText className="mb-2 h-8 w-8 text-muted-foreground" />
-          <p className="text-sm text-muted-foreground">No templates available.</p>
-          <p className="mt-1 text-xs text-muted-foreground">Create a template in Settings first.</p>
+          <p className="text-sm text-muted-foreground">Nenhum modelo disponível.</p>
+          <p className="mt-1 text-xs text-muted-foreground">Crie primeiro um modelo em Configurações.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">

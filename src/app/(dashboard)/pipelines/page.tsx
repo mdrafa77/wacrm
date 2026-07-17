@@ -223,7 +223,7 @@ export default function PipelinesPage() {
         .update({ stage_id: newStageId })
         .eq("id", dealId);
       if (error) {
-        toast.error("Failed to move deal");
+        toast.error("Falha ao mover a oportunidade");
         refreshDeals();
       }
     },
@@ -260,7 +260,7 @@ export default function PipelinesPage() {
     }
     // pipelines.account_id is NOT NULL post-017 with no DB default.
     if (!accountId) {
-      toast.error("Your profile is not linked to an account.");
+      toast.error("Seu perfil não está vinculado a uma conta.");
       setCreating(false);
       return;
     }
@@ -272,7 +272,7 @@ export default function PipelinesPage() {
       .single();
 
     if (error || !pipeline) {
-      toast.error("Failed to create pipeline");
+      toast.error("Falha ao criar o funil");
       setCreating(false);
       return;
     }
@@ -290,7 +290,7 @@ export default function PipelinesPage() {
     setSelectedPipelineId(pipeline.id);
     await refreshPipelines();
     setCreating(false);
-    toast.success("Pipeline created");
+    toast.success("Funil criado");
   }
 
   const selectedPipeline = pipelines.find((p) => p.id === selectedPipelineId);
@@ -425,14 +425,14 @@ export default function PipelinesPage() {
       <Dialog open={newPipelineOpen} onOpenChange={setNewPipelineOpen}>
         <DialogContent className="sm:max-w-sm bg-popover border-border">
           <DialogHeader>
-            <DialogTitle className="text-popover-foreground">New Pipeline</DialogTitle>
+            <DialogTitle className="text-popover-foreground">Novo funil</DialogTitle>
           </DialogHeader>
           <div className="py-2">
-            <Label className="text-muted-foreground">Pipeline Name</Label>
+            <Label className="text-muted-foreground">Nome do funil</Label>
             <Input
               value={newPipelineName}
               onChange={(e) => setNewPipelineName(e.target.value)}
-              placeholder="e.g., Enterprise Sales"
+              placeholder="ex.: Vendas empresariais"
               className="mt-2 bg-muted border-border text-foreground"
               onKeyDown={(e) => {
                 if (e.key === "Enter") handleCreatePipeline();

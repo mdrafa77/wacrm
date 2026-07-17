@@ -92,7 +92,7 @@ export function TagManager() {
     try {
       setSaving(true);
       if (!user || !accountId) {
-        toast.error('Not authenticated');
+        toast.error('Não autenticado');
         return;
       }
 
@@ -107,7 +107,7 @@ export function TagManager() {
 
       if (error) throw error;
 
-      toast.success('Tag created');
+      toast.success('Etiqueta criada');
       setNewTagName('');
       setSelectedColor(PRESET_COLORS[3].value);
       await fetchTags(user.id);
@@ -136,7 +136,7 @@ export function TagManager() {
 
       if (error) throw error;
 
-      toast.success('Tag deleted');
+      toast.success('Etiqueta excluída');
       setTags((prev) => prev.filter((t) => t.id !== tagToDelete.id));
       setDeleteDialogOpen(false);
       setTagToDelete(null);
@@ -253,7 +253,7 @@ export function TagManager() {
       <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
         <DialogContent className="sm:max-w-sm">
           <DialogHeader>
-            <DialogTitle>Delete tag</DialogTitle>
+            <DialogTitle>Excluir etiqueta</DialogTitle>
             <DialogDescription>
               Delete the tag &quot;{tagToDelete?.name}&quot;? This removes it
               from all contacts and cannot be undone.
@@ -278,7 +278,7 @@ export function TagManager() {
                   Deleting...
                 </>
               ) : (
-                'Delete tag'
+                'Excluir etiqueta'
               )}
             </Button>
           </DialogFooter>

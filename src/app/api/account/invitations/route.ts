@@ -6,7 +6,7 @@
 //
 // Both admin+. The list endpoint is what the Members tab uses to
 // populate the "Pending invitations" section; create is what the
-// "Invite member" dialog calls.
+// "Convidar membro" dialog calls.
 //
 // IMPORTANT: the plaintext token is returned exactly ONCE — in
 // the POST response. We store only the SHA-256 hash on the row,
@@ -153,7 +153,7 @@ export async function GET() {
     if (error) {
       console.error("[GET /api/account/invitations] fetch error:", error);
       return NextResponse.json(
-        { error: "Failed to load invitations" },
+        { error: "Falha ao carregar os convites" },
         { status: 500 },
       );
     }
@@ -232,7 +232,7 @@ export async function POST(request: Request) {
     if (error || !data) {
       console.error("[POST /api/account/invitations] insert error:", error);
       return NextResponse.json(
-        { error: "Failed to create invitation" },
+        { error: "Falha ao criar o convite" },
         { status: 500 },
       );
     }

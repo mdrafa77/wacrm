@@ -32,7 +32,7 @@ export function CustomFieldsSettings() {
         </CardTitle>
         <CardDescription className="text-muted-foreground">
           Extra contact fields (e.g. ZIP code, lead source). They appear on
-          every contact and in the “Update Contact Field” automation action.
+          todos os contatos e na ação de automação “Atualizar campo do contato”.
         </CardDescription>
       </CardHeader>
       <CardContent>

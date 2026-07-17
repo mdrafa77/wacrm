@@ -70,14 +70,14 @@ export function ProfileForm() {
     if (!file) return;
 
     if (!ALLOWED_MIME.has(file.type)) {
-      toast.error('Unsupported image type', {
-        description: 'Use PNG, JPG, WebP, or GIF.',
+      toast.error('Tipo de imagem não compatível', {
+        description: 'Use PNG, JPG, WebP ou GIF.',
       });
       return;
     }
     if (file.size > MAX_AVATAR_BYTES) {
-      toast.error('Image is too large', {
-        description: 'Maximum 2 MB.',
+      toast.error('A imagem é muito grande', {
+        description: 'Máximo de 2 MB.',
       });
       return;
     }
@@ -101,12 +101,12 @@ export function ProfileForm() {
 
     const trimmedName = fullName.trim();
     if (!trimmedName) {
-      toast.error('Display name is required');
+      toast.error('O nome de exibição é obrigatório');
       return;
     }
     const trimmedEmail = email.trim();
     if (!EMAIL_RE.test(trimmedEmail)) {
-      toast.error('Enter a valid email address');
+      toast.error('Digite um endereço de e-mail válido');
       return;
     }
 
@@ -161,7 +161,7 @@ export function ProfileForm() {
         });
         if (emailError) {
           // Partial success: name/avatar saved but email didn't.
-          toast.success('Profile saved');
+          toast.success('Perfil salvo');
           toast.error(`Email change failed: ${emailError.message}`);
           setSaving(false);
           await refreshProfile();
@@ -178,8 +178,8 @@ export function ProfileForm() {
 
       toast.success(
         emailSent
-          ? 'Profile saved — check your email to confirm the address change'
-          : 'Profile saved',
+          ? 'Perfil salvo — verifique seu e-mail para confirmar a alteração do endereço'
+          : 'Perfil salvo',
       );
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Unknown error';
@@ -207,8 +207,8 @@ export function ProfileForm() {
   return (
     <section className="max-w-2xl animate-in fade-in-50 duration-200">
       <SettingsPanelHead
-        title="Your profile"
-        description="How you show up across the app. Your avatar and name appear in the header, sidebar, and anywhere your teammates see you."
+        title="Seu perfil"
+        description="Como você aparece no app. Seu avatar e nome são exibidos no cabeçalho, na barra lateral e para seus colegas de equipe."
       />
       <form onSubmit={onSubmit} className="space-y-4">
         <Card>
@@ -239,7 +239,7 @@ export function ProfileForm() {
                 disabled={saving}
               >
                 <Upload className="size-4" />
-                {currentAvatar ? 'Change photo' : 'Upload photo'}
+                {currentAvatar ? 'Alterar foto' : 'Enviar foto'}
               </Button>
               {currentAvatar && (
                 <Button
@@ -307,17 +307,17 @@ export function ProfileForm() {
             </p>
             <dl className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
               <div>
-                <dt className="text-muted-foreground">Role</dt>
+                <dt className="text-muted-foreground">Função</dt>
                 <dd className="mt-0.5 font-mono text-foreground">
                   {profile?.role ?? 'user'}
                 </dd>
               </div>
               <div>
-                <dt className="text-muted-foreground">Joined</dt>
+                <dt className="text-muted-foreground">Entrou em</dt>
                 <dd className="mt-0.5 text-foreground">{joined}</dd>
               </div>
               <div className="sm:col-span-2">
-                <dt className="text-muted-foreground">User ID</dt>
+                <dt className="text-muted-foreground">ID do usuário</dt>
                 <dd className="mt-0.5 break-all font-mono text-xs text-muted-foreground">
                   {user?.id ?? '—'}
                 </dd>
@@ -343,7 +343,7 @@ export function ProfileForm() {
                 Saving…
               </>
             ) : (
-              'Save changes'
+              'Salvar alterações'
             )}
           </Button>
         </div>

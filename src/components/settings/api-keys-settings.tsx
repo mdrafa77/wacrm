@@ -88,7 +88,7 @@ export function ApiKeysSettings() {
       setKeys(data.keys);
     } catch (err) {
       console.error('[ApiKeysSettings] load error:', err);
-      toast.error('Could not reach the server');
+      toast.error('Não foi possível acessar o servidor');
     } finally {
       setLoading(false);
     }
@@ -118,7 +118,7 @@ export function ApiKeysSettings() {
       );
     } catch (err) {
       console.error('[ApiKeysSettings] revoke error:', err);
-      toast.error('Could not reach the server');
+      toast.error('Não foi possível acessar o servidor');
     } finally {
       setRevoking(null);
     }
@@ -139,7 +139,7 @@ export function ApiKeysSettings() {
         description={
           <>
             Keys authenticate the public REST API (
-            <code className="text-xs">/api/v1</code>) so you can build your own
+            <code className="text-xs">/api/v1</code>) para você criar suas próprias
             automations. Send them as{' '}
             <code className="text-xs">Authorization: Bearer &lt;key&gt;</code>.
           </>
@@ -163,7 +163,7 @@ export function ApiKeysSettings() {
             </p>
             {canEditSettings ? (
               <p className="text-muted-foreground mt-1 text-xs">
-                Click <span className="text-foreground">New API key</span> to
+                Clique em <span className="text-foreground">Nova chave de API</span> para
                 create one.
               </p>
             ) : (
@@ -327,7 +327,7 @@ function CreateKeyDialog({
       onCreated();
     } catch (err) {
       console.error('[CreateKeyDialog] create error:', err);
-      toast.error('Could not reach the server');
+      toast.error('Não foi possível acessar o servidor');
     } finally {
       setSubmitting(false);
     }
@@ -339,7 +339,7 @@ function CreateKeyDialog({
       await navigator.clipboard.writeText(createdKey);
       toast.success('API key copied');
     } catch {
-      toast.error('Copy failed — select and copy manually');
+      toast.error('Não foi possível copiar — selecione e copie manualmente');
     }
   }
 
@@ -365,7 +365,7 @@ function CreateKeyDialog({
             </DialogHeader>
 
             <div className="space-y-1.5">
-              <Label className="text-muted-foreground">API key</Label>
+              <Label className="text-muted-foreground">Chave de API</Label>
               <div className="flex gap-2">
                 <Input
                   readOnly
@@ -418,7 +418,7 @@ function CreateKeyDialog({
               </div>
 
               <div className="space-y-2">
-                <Label className="text-muted-foreground">Scopes</Label>
+                <Label className="text-muted-foreground">Permissões</Label>
                 <div className="border-border space-y-2 rounded-md border p-3">
                   {API_SCOPES.map((scope) => (
                     <label
@@ -445,7 +445,7 @@ function CreateKeyDialog({
                 </div>
                 <p className="text-muted-foreground text-xs">
                   A key with no scopes can still call{' '}
-                  <code className="text-[11px]">GET /api/v1/me</code> to verify
+                  <code className="text-[11px]">GET /api/v1/me</code> para verificar
                   it works.
                 </p>
               </div>
@@ -469,7 +469,7 @@ function CreateKeyDialog({
                     Creating…
                   </>
                 ) : (
-                  'Create key'
+                  'Criar chave'
                 )}
               </Button>
             </DialogFooter>

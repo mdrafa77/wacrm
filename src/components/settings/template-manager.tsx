@@ -197,7 +197,7 @@ export function TemplateManager() {
       setTemplates(data || []);
     } catch (err) {
       console.error('Failed to fetch templates:', err);
-      toast.error('Failed to load templates');
+      toast.error('Falha ao carregar os modelos');
     } finally {
       setLoading(false);
     }
@@ -273,7 +273,7 @@ export function TemplateManager() {
       const data = await res.json();
       if (!res.ok) {
         throw new Error(
-          data?.error || `${isEdit ? 'Edit' : 'Submit'} failed (HTTP ${res.status})`,
+          data?.error || `${isEdit ? 'Editar' : 'Submit'} failed (HTTP ${res.status})`,
         );
       }
       // Refresh first, then close — re-opening the dialog
@@ -356,7 +356,7 @@ export function TemplateManager() {
       if (!res.ok) {
         throw new Error(data?.error || `Delete failed (HTTP ${res.status})`);
       }
-      toast.success('Template deleted');
+      toast.success('Modelo excluído');
       setTemplates((prev) => prev.filter((t) => t.id !== target.id));
       setTemplateToDelete(null);
     } catch (err) {
@@ -473,7 +473,7 @@ export function TemplateManager() {
       setForm((f) => ({ ...f, header_media_url: publicUrl }));
       toast.success('Image uploaded.');
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : 'Upload failed.');
+      toast.error(err instanceof Error ? err.message : 'Falha ao enviar o arquivo.');
     } finally {
       setUploadingHeader(false);
     }
@@ -484,7 +484,7 @@ export function TemplateManager() {
       <SettingsPanelHead
         title="Message templates"
         description={
-          'Create templates and submit them to Meta for approval. Use "Sync from Meta" to pull templates approved elsewhere.'
+          'Crie modelos e envie-os à Meta para aprovação. Use "Sincronizar com a Meta" para importar modelos aprovados em outro lugar.'
         }
         action={
           <div className="flex items-center gap-2">
@@ -508,7 +508,7 @@ export function TemplateManager() {
       {templates.length === 0 ? (
         <Card>
           <CardContent className="flex flex-col items-center justify-center py-12 text-center">
-            <p className="text-muted-foreground text-sm">No templates yet.</p>
+            <p className="text-muted-foreground text-sm">Nenhum modelo ainda.</p>
             <p className="text-muted-foreground text-xs mt-1">
               Create your first message template to get started.
             </p>
@@ -641,7 +641,7 @@ export function TemplateManager() {
         <DialogContent className="bg-popover border-border sm:max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-popover-foreground">
-              {editingId ? 'Edit Message Template' : 'New Message Template'}
+              {editingId ? 'Editar modelo de mensagem' : 'Novo modelo de mensagem'}
             </DialogTitle>
             <DialogDescription className="text-muted-foreground">
               {editingId
@@ -656,7 +656,7 @@ export function TemplateManager() {
               <p>
                 AUTHENTICATION templates have a fixed body + OTP button shape
                 that needs a different builder. Create them in Meta WhatsApp
-                Manager for now and use <strong>Sync from Meta</strong> to
+                Manager por enquanto e use <strong>Sincronizar com a Meta</strong> para
                 bring them in.
               </p>
             </div>
@@ -664,7 +664,7 @@ export function TemplateManager() {
 
           <div className="space-y-4 py-2">
             <div className="space-y-2">
-              <Label className="text-muted-foreground">Template Name</Label>
+              <Label className="text-muted-foreground">Nome do modelo</Label>
               <Input
                 placeholder="e.g. order_confirmation"
                 value={form.name}
@@ -674,14 +674,14 @@ export function TemplateManager() {
               />
               <p className="text-[11px] text-muted-foreground">
                 {editingId
-                  ? 'Name is fixed once a template exists on Meta — create a new template to change it.'
+                  ? 'O nome não pode ser alterado após o modelo existir na Meta — crie um novo modelo para usar outro nome.'
                   : 'Lowercase letters, digits, and underscores only.'}
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label className="text-muted-foreground">Category</Label>
+                <Label className="text-muted-foreground">Categoria</Label>
                 <Select
                   value={form.category}
                   onValueChange={(val) =>
@@ -709,7 +709,7 @@ export function TemplateManager() {
               </div>
 
               <div className="space-y-2">
-                <Label className="text-muted-foreground">Language</Label>
+                <Label className="text-muted-foreground">Idioma</Label>
                 <Input
                   list="template-language-codes"
                   placeholder="en_US"
@@ -730,8 +730,8 @@ export function TemplateManager() {
                     ? 'Language is fixed once a template exists on Meta.'
                     : (
                         <>
-                          Must match the exact code on Meta — <code>en_US</code>{' '}
-                          and <code>en</code> are distinct.
+                          Deve corresponder exatamente ao código da Meta — <code>en_US</code>{' '}
+                          e <code>en</code> são diferentes.
                         </>
                       )}
                 </p>
@@ -739,7 +739,7 @@ export function TemplateManager() {
             </div>
 
             <div className="space-y-2">
-              <Label className="text-muted-foreground">Header</Label>
+              <Label className="text-muted-foreground">Cabeçalho</Label>
               <Select
                 value={form.header_format}
                 onValueChange={(val) =>
@@ -853,7 +853,7 @@ export function TemplateManager() {
                   )}
                   <p className="text-[11px] text-muted-foreground leading-relaxed">
                     {form.header_format === 'image'
-                      ? 'Upload a JPEG/PNG (≤5 MB, ≥800×418 px recommended) or paste a public HTTPS link — we upload it to Meta for review automatically.'
+                      ? 'Envie um JPEG/PNG (≤5 MB, recomendação de ≥800×418 px) ou cole um link HTTPS público — o arquivo será enviado automaticamente à Meta para análise.'
                       : 'Must be a publicly accessible HTTPS link. Meta fetches it once during review, so it needs to stay live for ~24 hrs.'}
                     {form.header_format === 'video' &&
                       ' Recommended: MP4 / 3GPP, ≤16 MB, ≤60 seconds.'}
@@ -865,7 +865,7 @@ export function TemplateManager() {
             </div>
 
             <div className="space-y-2">
-              <Label className="text-muted-foreground">Body Text</Label>
+              <Label className="text-muted-foreground">Texto da mensagem</Label>
               <Textarea
                 placeholder="Hello {{1}}, your order {{2}} is confirmed."
                 value={form.body_text}
@@ -909,7 +909,7 @@ export function TemplateManager() {
             </div>
 
             <div className="space-y-2">
-              <Label className="text-muted-foreground">Footer (optional)</Label>
+              <Label className="text-muted-foreground">Rodapé (opcional)</Label>
               <Input
                 placeholder="Optional footer text (max 60 chars)"
                 value={form.footer_text}
@@ -923,7 +923,7 @@ export function TemplateManager() {
 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label className="text-muted-foreground">Buttons (optional)</Label>
+                <Label className="text-muted-foreground">Botões (opcional)</Label>
                 <Button
                   type="button"
                   variant="outline"
@@ -1096,7 +1096,7 @@ export function TemplateManager() {
       >
         <DialogContent className="bg-popover border-border sm:max-w-sm">
           <DialogHeader>
-            <DialogTitle className="text-popover-foreground">Delete template?</DialogTitle>
+            <DialogTitle className="text-popover-foreground">Excluir modelo?</DialogTitle>
             <DialogDescription className="text-muted-foreground">
               {templateToDelete?.meta_template_id
                 ? `"${templateToDelete?.name}" will be deleted from Meta and from wacrm. Active broadcasts using this template will start failing on their next send. This can't be undone.`
@@ -1123,7 +1123,7 @@ export function TemplateManager() {
                   Deleting…
                 </>
               ) : (
-                'Delete'
+                'Excluir'
               )}
             </Button>
           </DialogFooter>

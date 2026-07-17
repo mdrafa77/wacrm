@@ -14,10 +14,10 @@ import { useBroadcastSending } from '@/hooks/use-broadcast-sending';
 import { Check } from 'lucide-react';
 
 const steps = [
-  { label: 'Template', key: 'template' },
-  { label: 'Audience', key: 'audience' },
+  { label: 'Modelo', key: 'template' },
+  { label: 'Público', key: 'audience' },
   { label: 'Personalize', key: 'personalize' },
-  { label: 'Send', key: 'send' },
+  { label: 'Enviar', key: 'send' },
 ] as const;
 
 export default function NewBroadcastPage() {
@@ -91,11 +91,11 @@ export default function NewBroadcastPage() {
     } = await supabase.auth.getSession();
     const user = session?.user;
     if (!user) {
-      toast.error('Not signed in.');
+      toast.error('Você não está conectado.');
       return;
     }
     if (!accountId) {
-      toast.error('Your profile is not linked to an account.');
+      toast.error('Seu perfil não está vinculado a uma conta.');
       return;
     }
 
@@ -123,7 +123,7 @@ export default function NewBroadcastPage() {
       toast.error(`Failed to save draft: ${error.message}`);
       return;
     }
-    toast.success('Draft saved');
+    toast.success('Rascunho salvo');
     router.push('/broadcasts');
   }
 
@@ -131,7 +131,7 @@ export default function NewBroadcastPage() {
     <div className="mx-auto max-w-3xl space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-foreground">New Broadcast</h1>
+        <h1 className="text-2xl font-bold text-foreground">Nova campanha</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Create and send a broadcast message to your contacts.
         </p>

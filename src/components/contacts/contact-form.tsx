@@ -123,14 +123,14 @@ export function ContactForm({
     e.preventDefault();
 
     if (!phone.trim()) {
-      toast.error('Phone number is required');
+      toast.error('O número de telefone é obrigatório');
       return;
     }
 
     // Hard-block an exact duplicate on create (the DB unique index is
     // the real backstop; this avoids a round-trip + a raw error toast).
     if (!isEdit && dupMatch?.exact) {
-      toast.error('A contact with this phone number already exists');
+      toast.error('Já existe um contato com este número de telefone');
       return;
     }
 
@@ -141,8 +141,8 @@ export function ContactForm({
         data: { session },
       } = await supabase.auth.getSession();
       const user = session?.user;
-      if (!user) throw new Error('Not authenticated');
-      if (!accountId) throw new Error('Your profile is not linked to an account.');
+      if (!user) throw new Error('Não autenticado');
+      if (!accountId) throw new Error('Seu perfil não está vinculado a uma conta.');
 
       let contactId = contact?.id;
 
@@ -194,7 +194,7 @@ export function ContactForm({
         }
       }
 
-      toast.success(isEdit ? 'Contact updated' : 'Contact created');
+      toast.success(isEdit ? 'Contato atualizado' : 'Contato criado');
       onOpenChange(false);
       onSaved();
     } catch (err: unknown) {
@@ -203,7 +203,7 @@ export function ContactForm({
       // normalizes equal). Surface it as the friendly duplicate notice
       // and, for new contacts, point the user at the existing record.
       if (isUniqueViolation(err)) {
-        toast.error('A contact with this phone number already exists');
+        toast.error('Já existe um contato com este número de telefone');
         if (!isEdit && accountId) {
           const existing = await findExistingContact(
             supabase,
@@ -226,12 +226,12 @@ export function ContactForm({
       <DialogContent className="bg-popover border-border text-popover-foreground sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="text-popover-foreground">
-            {isEdit ? 'Edit Contact' : 'Add Contact'}
+            {isEdit ? 'Editar contato' : 'Adicionar contato'}
           </DialogTitle>
           <DialogDescription className="text-muted-foreground">
             {isEdit
               ? 'Update the contact details below.'
-              : 'Fill in the details to create a new contact.'}
+              : 'Preencha os dados para criar um novo contato.'}
           </DialogDescription>
         </DialogHeader>
 
@@ -325,7 +325,7 @@ export function ContactForm({
           </div>
 
           <div className="space-y-2">
-            <Label className="text-muted-foreground">Tags</Label>
+            <Label className="text-muted-foreground">Etiquetas</Label>
             {loadingTags ? (
               <div className="flex items-center gap-2 text-muted-foreground text-sm">
                 <Loader2 className="size-3 animate-spin" />
@@ -378,7 +378,7 @@ export function ContactForm({
               className="bg-primary hover:bg-primary/90 text-primary-foreground"
             >
               {saving && <Loader2 className="size-4 animate-spin" />}
-              {isEdit ? 'Update' : 'Create'}
+              {isEdit ? 'Atualizar' : 'Criar'}
             </Button>
           </DialogFooter>
         </form>

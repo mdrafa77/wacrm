@@ -95,9 +95,9 @@ interface Invitation {
 // Editable roles in the inline dropdown. Owner is never an option —
 // promotions go through the (deferred) Transfer Ownership flow.
 const EDITABLE_ROLES: { value: AccountRole; label: string; hint: string }[] = [
-  { value: 'admin', label: 'Admin', hint: 'Manage members + everything' },
-  { value: 'agent', label: 'Agent', hint: 'Use features; no settings' },
-  { value: 'viewer', label: 'Viewer', hint: 'Read-only across the app' },
+  { value: 'admin', label: 'Admin', hint: 'Gerenciar membros e todos os recursos' },
+  { value: 'agent', label: 'Atendente', hint: 'Usar recursos, sem acesso às configurações' },
+  { value: 'viewer', label: 'Visualizador', hint: 'Somente leitura em todo o app' },
 ];
 
 // Per-role chip metadata (icon / label / colour) lives in the shared
@@ -149,7 +149,7 @@ export function MembersTab() {
 
       if (!mres.ok) {
         const payload = await mres.json().catch(() => ({}));
-        toast.error(payload.error || 'Failed to load members');
+        toast.error(payload.error || 'Falha ao carregar os membros');
         return;
       }
       const mdata = (await mres.json()) as { members: Member[] };
@@ -158,7 +158,7 @@ export function MembersTab() {
       if (ires) {
         if (!ires.ok) {
           const payload = await ires.json().catch(() => ({}));
-          toast.error(payload.error || 'Failed to load invitations');
+          toast.error(payload.error || 'Falha ao carregar os convites');
           return;
         }
         const idata = (await ires.json()) as { invitations: Invitation[] };
@@ -168,7 +168,7 @@ export function MembersTab() {
       }
     } catch (err) {
       console.error('[MembersTab] load error:', err);
-      toast.error('Could not reach the server');
+      toast.error('Não foi possível acessar o servidor');
     } finally {
       setLoading(false);
     }
@@ -208,7 +208,7 @@ export function MembersTab() {
           ),
         );
         const payload = await res.json().catch(() => ({}));
-        toast.error(payload.error || 'Failed to update role');
+        toast.error(payload.error || 'Falha ao atualizar a função');
         return;
       }
       toast.success(`Updated ${member.full_name || 'member'} to ${nextRole}`);
@@ -220,7 +220,7 @@ export function MembersTab() {
         ),
       );
       console.error('[MembersTab] role change error:', err);
-      toast.error('Could not reach the server');
+      toast.error('Não foi possível acessar o servidor');
     } finally {
       setPendingMemberAction(null);
     }
@@ -246,7 +246,7 @@ export function MembersTab() {
       setRemovingMember(null);
     } catch (err) {
       console.error('[MembersTab] remove error:', err);
-      toast.error('Could not reach the server');
+      toast.error('Não foi possível acessar o servidor');
     } finally {
       setPendingMemberAction(null);
     }
@@ -266,7 +266,7 @@ export function MembersTab() {
       setInvitations((prev) => prev.filter((i) => i.id !== invite.id));
     } catch (err) {
       console.error('[MembersTab] revoke error:', err);
-      toast.error('Could not reach the server');
+      toast.error('Não foi possível acessar o servidor');
     }
   }
 
@@ -355,7 +355,7 @@ export function MembersTab() {
                             {member.avatar_url ? (
                               <AvatarImage
                                 src={member.avatar_url}
-                                alt={member.full_name || 'Member'}
+                                alt={member.full_name || 'Membro'}
                               />
                             ) : null}
                             <AvatarFallback className="bg-primary/10 text-sm font-medium text-primary">
@@ -381,7 +381,7 @@ export function MembersTab() {
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2">
                         <span className="truncate text-sm font-medium text-foreground">
-                          {member.full_name || 'Unnamed'}
+                          {member.full_name || 'Sem nome'}
                         </span>
                         {isSelf && (
                           <Badge className="bg-muted text-muted-foreground border-border text-[10px] uppercase tracking-wide">
@@ -504,7 +504,7 @@ export function MembersTab() {
                   No pending invitations.
                 </p>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  Click <span className="text-muted-foreground">Invite member</span>{' '}
+                  Clique em <span className="text-muted-foreground">Convidar membro</span>{' '}
                   above to generate a shareable link.
                 </p>
               </CardContent>
@@ -524,7 +524,7 @@ export function MembersTab() {
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2">
                           <span className="text-sm font-medium text-foreground">
-                            {inv.label || 'Untitled invite'}
+                            {inv.label || 'Convite sem título'}
                           </span>
                           <span
                             className={`inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[11px] font-medium ${inviteRoleMeta.className}`}
@@ -577,7 +577,7 @@ export function MembersTab() {
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2 text-popover-foreground">
               <AlertTriangle className="size-4 text-amber-400" />
-              Remove member
+              Remover membro
             </DialogTitle>
             <DialogDescription className="text-muted-foreground">
               Remove{' '}
@@ -608,7 +608,7 @@ export function MembersTab() {
                   Removing...
                 </>
               ) : (
-                'Remove member'
+                'Remover membro'
               )}
             </Button>
           </DialogFooter>

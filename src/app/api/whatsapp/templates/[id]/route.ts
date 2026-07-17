@@ -16,7 +16,7 @@ import { ensureImageHeaderHandle } from '@/lib/whatsapp/template-header-handle'
  * Per-template lifecycle endpoint.
  *
  * PATCH  — edit an existing Meta-side template (and re-submit). Used
- *          by the "Edit" action on APPROVED rows and the "Resubmit"
+ *          by the "Editar" action on APPROVED rows and the "Resubmit"
  *          action on REJECTED / PAUSED rows. Meta replaces components
  *          wholesale on edit and bumps status back to PENDING.
  *
@@ -75,7 +75,7 @@ export async function PATCH(
     const accountId = profile?.account_id as string | undefined
     if (!accountId) {
       return NextResponse.json(
-        { error: 'Your profile is not linked to an account.' },
+        { error: 'Seu perfil não está vinculado a uma conta.' },
         { status: 403 },
       )
     }
@@ -262,7 +262,7 @@ export async function DELETE(
     const accountId = profile?.account_id as string | undefined
     if (!accountId) {
       return NextResponse.json(
-        { error: 'Your profile is not linked to an account.' },
+        { error: 'Seu perfil não está vinculado a uma conta.' },
         { status: 403 },
       )
     }

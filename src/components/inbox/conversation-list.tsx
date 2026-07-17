@@ -39,10 +39,10 @@ const STATUS_COLORS: Record<ConversationStatus, string> = {
 type InboxFilter = ConversationStatus | "all" | "unread";
 
 const FILTER_OPTIONS: { label: string; value: InboxFilter }[] = [
-  { label: "All", value: "all" },
+  { label: "Todos", value: "all" },
   { label: "Unread", value: "unread" },
   { label: "Open", value: "open" },
-  { label: "Pending", value: "pending" },
+  { label: "Pendente", value: "pending" },
   { label: "Closed", value: "closed" },
 ];
 
@@ -160,14 +160,14 @@ export function ConversationList({
           <Input
             value={search}
             onChange={handleSearchChange}
-            placeholder="Search conversations..."
+            placeholder="Pesquisar conversas..."
             className="border-border bg-muted pl-9 text-sm text-foreground placeholder-muted-foreground focus:border-primary/50"
           />
         </div>
 
         <DropdownMenu>
           <DropdownMenuTrigger className="inline-flex items-center justify-center h-7 gap-1 px-2 text-xs text-muted-foreground hover:text-foreground rounded-md hover:bg-muted">
-              {activeFilter?.label ?? "All"}
+              {activeFilter?.label ?? "Todos"}
               <ChevronDown className="h-3 w-3" />
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -205,7 +205,7 @@ export function ConversationList({
           </div>
         ) : filtered.length === 0 ? (
           <div className="px-4 py-12 text-center">
-            <p className="text-sm text-muted-foreground">No conversations found</p>
+            <p className="text-sm text-muted-foreground">Nenhuma conversa encontrada</p>
           </div>
         ) : (
           <div className="flex flex-col">
@@ -280,7 +280,7 @@ function ConversationItem({
         </div>
         <div className="mt-0.5 flex items-center justify-between gap-2">
           <p className="truncate text-xs text-muted-foreground">
-            {conversation.last_message_text || "No messages yet"}
+            {conversation.last_message_text || "Nenhuma mensagem ainda"}
           </p>
           <div className="flex shrink-0 items-center gap-1.5">
             {conversation.unread_count > 0 && (

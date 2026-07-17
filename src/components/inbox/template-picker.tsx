@@ -190,7 +190,7 @@ export function TemplatePicker({
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-popover-foreground">
             <LayoutTemplate className="h-4 w-4 text-primary" />
-            {selected ? selected.name : "Send template"}
+            {selected ? selected.name : "Enviar modelo"}
           </DialogTitle>
           <DialogDescription className="text-muted-foreground">
             {selected
@@ -207,7 +207,7 @@ export function TemplatePicker({
               </div>
             ) : templates.length === 0 ? (
               <div className="rounded-md border border-border bg-background/50 p-6 text-center">
-                <p className="text-sm text-popover-foreground">No approved templates</p>
+                <p className="text-sm text-popover-foreground">Nenhum modelo aprovado</p>
                 <p className="mt-1 text-xs text-muted-foreground">
                   Approve a template in Meta WhatsApp Manager, then sync it
                   from Settings → Templates.
@@ -249,7 +249,7 @@ export function TemplatePicker({
         ) : (
           <div className="space-y-3">
             <div className="rounded-md border border-border bg-background/50 p-3">
-              <p className="mb-1 text-xs text-muted-foreground">Preview</p>
+              <p className="mb-1 text-xs text-muted-foreground">Prévia</p>
               <p className="whitespace-pre-wrap text-sm text-popover-foreground">
                 {renderBodyPreview(selected.body_text, params)}
               </p>

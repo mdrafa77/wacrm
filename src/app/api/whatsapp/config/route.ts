@@ -79,7 +79,7 @@ export async function GET() {
         {
           connected: false,
           reason: 'no_account',
-          message: 'Your profile is not linked to an account.',
+          message: 'Seu perfil não está vinculado a uma conta.',
         },
         { status: 200 },
       )
@@ -179,7 +179,7 @@ export async function POST(request: Request) {
     const accountId = await resolveAccountId(supabase, user.id)
     if (!accountId) {
       return NextResponse.json(
-        { error: 'Your profile is not linked to an account.' },
+        { error: 'Seu perfil não está vinculado a uma conta.' },
         { status: 403 },
       )
     }
@@ -454,7 +454,7 @@ export async function DELETE() {
     const accountId = await resolveAccountId(supabase, user.id)
     if (!accountId) {
       return NextResponse.json(
-        { error: 'Your profile is not linked to an account.' },
+        { error: 'Seu perfil não está vinculado a uma conta.' },
         { status: 403 },
       )
     }

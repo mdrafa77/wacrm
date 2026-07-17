@@ -56,10 +56,10 @@ const EXPIRY_OPTIONS: { value: string; label: string }[] = [
 
 const ROLE_DESCRIPTIONS: Record<InviteRole, string> = {
   admin:
-    'Can invite teammates, manage settings, send messages, and edit data.',
+    'Pode convidar colegas, gerenciar configurações, enviar mensagens e editar dados.',
   agent:
-    'Can use the inbox, contacts, broadcasts, automations, and flows. No settings or member access.',
-  viewer: 'Read-only access across every page. Cannot send or edit anything.',
+    'Pode usar a caixa de entrada, contatos, campanhas, automações e fluxos. Sem acesso às configurações ou membros.',
+  viewer: 'Acesso somente para leitura em todas as páginas. Não pode enviar nem editar nada.',
 };
 
 // Server caps label at 80 chars (see src/app/api/account/invitations/route.ts).
@@ -122,7 +122,7 @@ export function InviteMemberDialog({
 
       if (!res.ok) {
         const payload = await res.json().catch(() => ({}));
-        toast.error(payload.error || 'Failed to create invitation');
+        toast.error(payload.error || 'Falha ao criar o convite');
         return;
       }
 
@@ -145,7 +145,7 @@ export function InviteMemberDialog({
       onCreated();
     } catch (err) {
       console.error('[InviteMemberDialog] create error:', err);
-      toast.error('Could not reach the server. Try again?');
+      toast.error('Não foi possível acessar o servidor. Tentar novamente?');
     } finally {
       setSubmitting(false);
     }
@@ -155,12 +155,12 @@ export function InviteMemberDialog({
     if (!result) return;
     try {
       await navigator.clipboard.writeText(result.url);
-      toast.success('Invite link copied');
+      toast.success('Link de convite copiado');
     } catch {
       // Most likely "not in a secure context" — happens on http://
       // local IPs. Surface the link in the toast so the admin can
       // hand-copy it.
-      toast.error('Clipboard blocked — copy the link manually');
+      toast.error('Área de transferência bloqueada — copie o link manualmente');
     }
   }
 
@@ -206,7 +206,7 @@ export function InviteMemberDialog({
             </DialogHeader>
 
             <div className="space-y-3 py-2">
-              <Label className="text-muted-foreground">Invite link</Label>
+              <Label className="text-muted-foreground">Link de convite</Label>
               <div className="flex gap-2">
                 <Input
                   readOnly
@@ -270,7 +270,7 @@ export function InviteMemberDialog({
         ) : (
           <>
             <DialogHeader>
-              <DialogTitle className="text-popover-foreground">Invite a teammate</DialogTitle>
+              <DialogTitle className="text-popover-foreground">Convidar colega de equipe</DialogTitle>
               <DialogDescription className="text-muted-foreground">
                 Generate a one-time invite link. Share it via WhatsApp,
                 Slack, or any channel you like — no email service required.
@@ -279,7 +279,7 @@ export function InviteMemberDialog({
 
             <div className="space-y-4 py-2">
               <div className="space-y-2">
-                <Label className="text-muted-foreground">Role</Label>
+                <Label className="text-muted-foreground">Função</Label>
                 <Select
                   value={role}
                   onValueChange={(v) => v && setRole(v as InviteRole)}
@@ -289,8 +289,8 @@ export function InviteMemberDialog({
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="admin">Admin</SelectItem>
-                    <SelectItem value="agent">Agent</SelectItem>
-                    <SelectItem value="viewer">Viewer</SelectItem>
+                    <SelectItem value="agent">Atendente</SelectItem>
+                    <SelectItem value="viewer">Visualizador</SelectItem>
                   </SelectContent>
                 </Select>
                 <p className="text-xs text-muted-foreground">
@@ -299,7 +299,7 @@ export function InviteMemberDialog({
               </div>
 
               <div className="space-y-2">
-                <Label className="text-muted-foreground">Link valid for</Label>
+                <Label className="text-muted-foreground">Link válido por</Label>
                 <Select
                   value={expiry}
                   onValueChange={(v) => v && setExpiry(v)}
@@ -320,10 +320,10 @@ export function InviteMemberDialog({
               <div className="space-y-2">
                 <Label className="text-muted-foreground">
                   Label{' '}
-                  <span className="text-xs text-muted-foreground">(optional)</span>
+                  <span className="text-xs text-muted-foreground">(opcional)</span>
                 </Label>
                 <Input
-                  placeholder="e.g. Sara — support team"
+                  placeholder="ex.: Sara — equipe de suporte"
                   value={label}
                   onChange={(e) => setLabel(e.target.value)}
                   maxLength={MAX_LABEL_LEN}

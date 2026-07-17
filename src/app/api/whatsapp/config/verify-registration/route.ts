@@ -51,7 +51,7 @@ export async function GET() {
     return NextResponse.json({
       live: false,
       checks: { config_exists: false },
-      message: 'Your profile is not linked to an account.',
+      message: 'Seu perfil não está vinculado a uma conta.',
     })
   }
 

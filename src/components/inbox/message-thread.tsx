@@ -110,8 +110,8 @@ interface MessageThreadProps {
 
 function formatDateSeparator(dateStr: string): string {
   const date = new Date(dateStr);
-  if (isToday(date)) return "Today";
-  if (isYesterday(date)) return "Yesterday";
+  if (isToday(date)) return "Hoje";
+  if (isYesterday(date)) return "Ontem";
   return format(date, "MMMM d, yyyy");
 }
 
@@ -134,7 +134,7 @@ function groupMessagesByDate(messages: Message[]) {
 
 const STATUS_OPTIONS: { label: string; value: ConversationStatus; color: string }[] = [
   { label: "Open", value: "open", color: "text-primary" },
-  { label: "Pending", value: "pending", color: "text-amber-400" },
+  { label: "Pendente", value: "pending", color: "text-amber-400" },
   { label: "Closed", value: "closed", color: "text-muted-foreground" },
 ];
 
@@ -704,7 +704,7 @@ export function MessageThread({
         return;
       }
       if (messageId.startsWith("temp-")) {
-        toast.error("Wait for the message to finish sending");
+        toast.error("Aguarde o término do envio da mensagem");
         return;
       }
 
@@ -828,7 +828,7 @@ export function MessageThread({
             <button
               type="button"
               onClick={onBack}
-              aria-label="Back to conversations"
+              aria-label="Voltar para conversas"
               className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground lg:hidden"
             >
               <ArrowLeft className="h-5 w-5" />
@@ -869,7 +869,7 @@ export function MessageThread({
                 contactPanelOpen ? "Hide contact panel" : "Show contact panel"
               }
               aria-pressed={contactPanelOpen}
-              title={contactPanelOpen ? "Hide contact" : "Show contact"}
+              title={contactPanelOpen ? "Ocultar contato" : "Exibir contato"}
               className={cn(
                 "hidden h-7 w-7 items-center justify-center rounded-md transition-colors hover:bg-muted hover:text-foreground lg:inline-flex",
                 contactPanelOpen ? "text-primary" : "text-muted-foreground",
@@ -893,8 +893,8 @@ export function MessageThread({
               type="button"
               onClick={handleRefreshClick}
               disabled={isRefreshing}
-              aria-label="Refresh conversation"
-              title="Refresh"
+              aria-label="Atualizar conversa"
+              title="Atualizar"
               className={cn(
                 "inline-flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:opacity-60",
               )}
@@ -1005,7 +1005,7 @@ export function MessageThread({
           </div>
         ) : messages.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-12">
-            <p className="text-sm text-muted-foreground">No messages yet</p>
+            <p className="text-sm text-muted-foreground">Nenhuma mensagem ainda</p>
             <p className="text-xs text-muted-foreground">
               Send a template to start the conversation
             </p>

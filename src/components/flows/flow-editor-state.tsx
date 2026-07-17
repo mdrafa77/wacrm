@@ -91,7 +91,7 @@ export interface FlowEditorContextValue {
   canActivate: boolean;
 
   // Node mutations. addNode returns the generated key so the caller
-  // (a NodeCard "Add" button or canvas "+" button) can scroll to /
+  // (a NodeCard "Adicionar" button or canvas "+" button) can scroll to /
   // focus / open the new node.
   addNode: (type: NodeType) => string;
   updateNode: (key: string, patch: Partial<BuilderNode>) => void;
@@ -349,7 +349,7 @@ export function FlowEditorProvider({
       setDirty(false);
       toast.success("Saved.");
     } catch (err) {
-      const msg = err instanceof Error ? err.message : "Save failed";
+      const msg = err instanceof Error ? err.message : "Falha ao salvar";
       toast.error(msg);
     } finally {
       setSaving(false);

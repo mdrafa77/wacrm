@@ -137,7 +137,7 @@ export function SettingsOverview({
     };
   }, [user, accountId, canManageMembers]);
 
-  const displayName = profile?.full_name || profile?.email || 'Your account';
+  const displayName = profile?.full_name || profile?.email || 'Sua conta';
   const initial = (profile?.full_name || profile?.email || 'U').charAt(0).toUpperCase();
   const roleMeta = accountRole ? ROLE_META[accountRole] : null;
   const RoleIcon = roleMeta?.icon;
@@ -174,7 +174,7 @@ export function SettingsOverview({
       loading: countsLoading,
       subtitle:
         counts?.members == null
-          ? 'View team members'
+          ? 'Ver membros da equipe'
           : `${counts.members} member${counts.members === 1 ? '' : 's'}${
               counts.pendingInvites
                 ? ` · ${counts.pendingInvites} pending invite${
@@ -188,7 +188,7 @@ export function SettingsOverview({
       loading: countsLoading,
       subtitle:
         counts?.templates == null
-          ? 'Manage message templates'
+          ? 'Gerenciar modelos de mensagem'
           : `${counts.templates} template${counts.templates === 1 ? '' : 's'}${
               counts.templatesPending
                 ? ` · ${counts.templatesPending} pending review`

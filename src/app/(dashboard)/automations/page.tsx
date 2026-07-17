@@ -75,7 +75,7 @@ export default function AutomationsPage() {
       if (fetchErr) throw fetchErr
       setAutomations((data ?? []) as Automation[])
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to load automations")
+      setError(err instanceof Error ? err.message : "Falha ao carregar as automações")
     }
   }
 
@@ -99,20 +99,20 @@ export default function AutomationsPage() {
         prev?.map((x) => (x.id === a.id ? { ...x, is_active: !next } : x)) ?? prev,
       )
       const body = await res.json().catch(() => ({}))
-      toast.error(body?.error ?? "Failed to update")
+      toast.error(body?.error ?? "Falha ao atualizar")
       return
     }
-    toast.success(next ? "Automation activated" : "Automation paused")
+    toast.success(next ? "Automação ativada" : "Automação pausada")
   }
 
   async function duplicate(a: Automation) {
     const res = await fetch(`/api/automations/${a.id}/duplicate`, { method: "POST" })
     if (!res.ok) {
       const body = await res.json().catch(() => ({}))
-      toast.error(body?.error ?? "Failed to duplicate")
+      toast.error(body?.error ?? "Falha ao duplicar")
       return
     }
-    toast.success("Automation duplicated")
+    toast.success("Automação duplicada")
     load()
   }
 
@@ -123,10 +123,10 @@ export default function AutomationsPage() {
     setDeleting(false)
     if (!res.ok) {
       const body = await res.json().catch(() => ({}))
-      toast.error(body?.error ?? "Failed to delete")
+      toast.error(body?.error ?? "Falha ao excluir")
       return
     }
-    toast.success("Automation deleted")
+    toast.success("Automação excluída")
     setPendingDelete(null)
     load()
   }
@@ -160,7 +160,7 @@ export default function AutomationsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Automations</h1>
+          <h1 className="text-2xl font-bold text-foreground">Automações</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Build workflows that react to WhatsApp® events automatically.
           </p>
@@ -178,7 +178,7 @@ export default function AutomationsPage() {
 
       {showTemplates && (
         <section>
-          <h2 className="mb-3 text-sm font-semibold text-muted-foreground">Quick-start templates</h2>
+          <h2 className="mb-3 text-sm font-semibold text-muted-foreground">Modelos para começar rapidamente</h2>
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
             {TEMPLATE_ORDER.map((slug) => {
               const t = AUTOMATION_TEMPLATES[slug]
@@ -206,7 +206,7 @@ export default function AutomationsPage() {
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
             <Zap className="h-6 w-6 text-primary" />
           </div>
-          <p className="mt-3 text-sm font-medium text-foreground">No automations yet</p>
+          <p className="mt-3 text-sm font-medium text-foreground">Nenhuma automação ainda</p>
           <p className="mt-1 text-xs text-muted-foreground">
             Pick a template above or create one from scratch.
           </p>
@@ -230,7 +230,7 @@ export default function AutomationsPage() {
       <Dialog open={!!pendingDelete} onOpenChange={(v) => !v && setPendingDelete(null)}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Delete automation</DialogTitle>
+            <DialogTitle>Excluir automação</DialogTitle>
             <DialogDescription>
               This permanently removes{" "}
               <span className="text-foreground">{pendingDelete?.name}</span> and its execution
@@ -326,12 +326,12 @@ function AutomationCard({
           <Switch
             checked={automation.is_active}
             onCheckedChange={(v) => onToggle(!!v)}
-            aria-label={automation.is_active ? "Deactivate" : "Activate"}
+            aria-label={automation.is_active ? "Desativar" : "Ativar"}
           />
 
           <DropdownMenu>
             <DropdownMenuTrigger
-              aria-label="Open menu"
+              aria-label="Abrir menu"
               className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground data-[popup-open]:bg-muted"
             >
               <MoreVertical className="h-4 w-4" />

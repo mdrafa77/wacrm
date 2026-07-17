@@ -259,7 +259,7 @@ export default function ContactsPage() {
     if (error) {
       toast.error('Failed to delete contact');
     } else {
-      toast.success('Contact deleted');
+      toast.success('Contato excluído');
       fetchContacts();
     }
 
@@ -342,7 +342,7 @@ export default function ContactsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Contacts</h1>
+          <h1 className="text-2xl font-bold text-foreground">Contatos</h1>
           <p className="text-sm text-muted-foreground mt-1">
             Manage your contact list. {totalCount > 0 && `${totalCount} total contacts.`}
           </p>
@@ -490,7 +490,7 @@ export default function ContactsPage() {
               onClick={clearTagFilters}
               className="text-xs text-muted-foreground hover:text-foreground px-1"
             >
-              Clear all
+              Limpar tudo
             </button>
           </div>
         )}
@@ -501,7 +501,7 @@ export default function ContactsPage() {
         <div className="flex items-center justify-between gap-4 rounded-lg border border-border bg-muted/40 px-4 py-2">
           <p className="text-sm text-foreground">
             <span className="font-medium">{selected.size}</span>{' '}
-            {selected.size === 1 ? 'contact' : 'contacts'} selected
+            {selected.size === 1 ? 'contato selecionado' : 'contatos selecionados'}
           </p>
           <div className="flex items-center gap-2">
             <Button
@@ -510,7 +510,7 @@ export default function ContactsPage() {
               onClick={() => setSelected(new Set())}
               className="text-muted-foreground hover:text-foreground"
             >
-              Clear
+              Limpar
             </Button>
             <GatedButton
               variant="destructive"
@@ -540,12 +540,12 @@ export default function ContactsPage() {
                   aria-label="Select all contacts on this page"
                 />
               </TableHead>
-              <TableHead className="text-muted-foreground">Name</TableHead>
-              <TableHead className="text-muted-foreground">Phone</TableHead>
-              <TableHead className="text-muted-foreground hidden md:table-cell">Email</TableHead>
-              <TableHead className="text-muted-foreground hidden lg:table-cell">Company</TableHead>
-              <TableHead className="text-muted-foreground hidden md:table-cell">Tags</TableHead>
-              <TableHead className="text-muted-foreground hidden lg:table-cell">Created</TableHead>
+              <TableHead className="text-muted-foreground">Nome</TableHead>
+              <TableHead className="text-muted-foreground">Telefone</TableHead>
+              <TableHead className="text-muted-foreground hidden md:table-cell">E-mail</TableHead>
+              <TableHead className="text-muted-foreground hidden lg:table-cell">Empresa</TableHead>
+              <TableHead className="text-muted-foreground hidden md:table-cell">Etiquetas</TableHead>
+              <TableHead className="text-muted-foreground hidden lg:table-cell">Criado</TableHead>
               <TableHead className="text-muted-foreground w-12" />
             </TableRow>
           </TableHeader>
@@ -555,7 +555,7 @@ export default function ContactsPage() {
                 <TableCell colSpan={8} className="text-center py-12">
                   <div className="flex flex-col items-center gap-2">
                     <Loader2 className="size-6 animate-spin text-primary" />
-                    <p className="text-sm text-muted-foreground">Loading contacts...</p>
+                    <p className="text-sm text-muted-foreground">Carregando contatos...</p>
                   </div>
                 </TableCell>
               </TableRow>
@@ -566,8 +566,8 @@ export default function ContactsPage() {
                     <Users className="size-8 text-muted-foreground" />
                     <p className="text-sm text-muted-foreground">
                       {hasActiveFilters
-                        ? 'No contacts match your filters.'
-                        : 'No contacts yet.'}
+                        ? 'Nenhum contato corresponde aos filtros.'
+                        : 'Nenhum contato ainda.'}
                     </p>
                     {!hasActiveFilters && (
                       <Button
@@ -598,7 +598,7 @@ export default function ContactsPage() {
                     />
                   </TableCell>
                   <TableCell className="text-foreground font-medium">
-                    {contact.name || <span className="text-muted-foreground italic">Unnamed</span>}
+                    {contact.name || <span className="text-muted-foreground italic">Sem nome</span>}
                   </TableCell>
                   <TableCell className="text-muted-foreground font-mono text-xs">
                     {contact.phone}
@@ -635,7 +635,7 @@ export default function ContactsPage() {
                     </div>
                   </TableCell>
                   <TableCell className="text-muted-foreground text-xs hidden lg:table-cell">
-                    {new Date(contact.created_at).toLocaleDateString('en-US', {
+                    {new Date(contact.created_at).toLocaleDateString('pt-BR', {
                       month: 'short',
                       day: 'numeric',
                       year: 'numeric',
@@ -766,7 +766,7 @@ export default function ContactsPage() {
       <Dialog open={deleteConfirmOpen} onOpenChange={setDeleteConfirmOpen}>
         <DialogContent className="bg-popover border-border text-popover-foreground sm:max-w-sm">
           <DialogHeader>
-            <DialogTitle className="text-popover-foreground">Delete Contact</DialogTitle>
+            <DialogTitle className="text-popover-foreground">Excluir contato</DialogTitle>
             <DialogDescription className="text-muted-foreground">
               Are you sure you want to delete{' '}
               <span className="text-popover-foreground font-medium">
@@ -800,14 +800,14 @@ export default function ContactsPage() {
         <DialogContent className="bg-popover border-border text-popover-foreground sm:max-w-sm">
           <DialogHeader>
             <DialogTitle className="text-popover-foreground">
-              Delete {selected.size} {selected.size === 1 ? 'Contact' : 'Contacts'}
+              Excluir {selected.size} {selected.size === 1 ? 'contato' : 'contatos'}
             </DialogTitle>
             <DialogDescription className="text-muted-foreground">
-              Are you sure you want to delete{' '}
+              Tem certeza de que deseja excluir{' '}
               <span className="text-popover-foreground font-medium">
-                {selected.size} {selected.size === 1 ? 'contact' : 'contacts'}
+                {selected.size} {selected.size === 1 ? 'contato' : 'contatos'}
               </span>
-              ? This action cannot be undone.
+              ? Esta ação não pode ser desfeita.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="bg-popover border-border">
@@ -816,7 +816,7 @@ export default function ContactsPage() {
               onClick={() => setBulkDeleteOpen(false)}
               className="border-border text-muted-foreground hover:bg-muted"
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               variant="destructive"

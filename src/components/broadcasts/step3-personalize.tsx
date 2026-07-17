@@ -49,10 +49,10 @@ function isValidHttpUrl(value: string): boolean {
 }
 
 const contactFields = [
-  { value: 'name', label: 'Contact Name' },
-  { value: 'phone', label: 'Phone Number' },
-  { value: 'email', label: 'Email Address' },
-  { value: 'company', label: 'Company' },
+  { value: 'name', label: 'Nome do contato' },
+  { value: 'phone', label: 'Número de telefone' },
+  { value: 'email', label: 'Endereço de e-mail' },
+  { value: 'company', label: 'Empresa' },
 ];
 
 const SAMPLE_CONTACT: Contact = {
@@ -235,7 +235,7 @@ export function Step3Personalize({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-lg font-semibold text-foreground">Personalize Message</h2>
+        <h2 className="text-lg font-semibold text-foreground">Personalizar mensagem</h2>
         <p className="mt-1 text-sm text-muted-foreground">
           Map template variables to contact fields, custom fields, or static
           values.
@@ -246,7 +246,7 @@ export function Step3Personalize({
         <div className="rounded-xl border border-border bg-card/50 p-4">
           <div className="mb-3 flex items-center gap-2">
             <ImageIcon className="h-4 w-4 text-primary" />
-            <p className="text-sm font-medium text-foreground">Header media</p>
+            <p className="text-sm font-medium text-foreground">Mídia do cabeçalho</p>
             <span className="inline-flex items-center rounded-md bg-primary/10 px-2 py-0.5 text-xs font-medium uppercase text-primary">
               {mediaHeaderType}
             </span>
@@ -332,10 +332,10 @@ export function Step3Personalize({
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent className="border-border bg-popover">
-                        <SelectItem value="static">Static Value</SelectItem>
-                        <SelectItem value="field">Contact Field</SelectItem>
+                        <SelectItem value="static">Valor fixo</SelectItem>
+                        <SelectItem value="field">Campo do contato</SelectItem>
                         <SelectItem value="custom_field">
-                          Custom Field
+                          Campo personalizado
                         </SelectItem>
                       </SelectContent>
                     </Select>
@@ -343,7 +343,7 @@ export function Step3Personalize({
 
                   <div>
                     <label className="mb-1.5 block text-xs font-medium text-muted-foreground">
-                      {mapping.type === 'static' ? 'Value' : 'Field'}
+                      {mapping.type === 'static' ? 'Valor' : 'Campo'}
                     </label>
                     {mapping.type === 'static' ? (
                       <Input
@@ -351,7 +351,7 @@ export function Step3Personalize({
                         onChange={(e) =>
                           updateVariable(key, { value: e.target.value })
                         }
-                        placeholder="Enter value..."
+                        placeholder="Digite um valor..."
                         className="border-border bg-muted text-foreground placeholder:text-muted-foreground"
                       />
                     ) : mapping.type === 'field' ? (
@@ -362,7 +362,7 @@ export function Step3Personalize({
                         }
                       >
                         <SelectTrigger className="w-full border-border bg-muted text-foreground">
-                          <SelectValue placeholder="Select field..." />
+                          <SelectValue placeholder="Selecione um campo..." />
                         </SelectTrigger>
                         <SelectContent className="border-border bg-popover">
                           {contactFields.map((field) => (
@@ -383,9 +383,9 @@ export function Step3Personalize({
                           <SelectValue
                             placeholder={
                               loadingFields
-                                ? 'Loading…'
+                                ? 'Carregando…'
                                 : customFields.length === 0
-                                  ? 'No custom fields'
+                                  ? 'Nenhum campo personalizado'
                                   : 'Select custom field…'
                             }
                           />
@@ -412,7 +412,7 @@ export function Step3Personalize({
       <div className="rounded-xl border border-border bg-card/50 p-4">
         <div className="mb-3 flex items-center gap-2">
           <Eye className="h-4 w-4 text-primary" />
-          <p className="text-sm font-medium text-foreground">Live Preview</p>
+          <p className="text-sm font-medium text-foreground">Prévia em tempo real</p>
           <span className="text-xs text-muted-foreground">({previewLabel})</span>
           {loadingPreview && (
             <Loader2 className="h-3.5 w-3.5 animate-spin text-primary" />

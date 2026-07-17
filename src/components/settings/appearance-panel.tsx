@@ -24,8 +24,8 @@ export function AppearancePanel() {
   return (
     <section className="max-w-3xl animate-in fade-in-50 duration-200">
       <SettingsPanelHead
-        title="Appearance"
-        description="Set the mode and accent colour used across the app. Saved to this device — try it, it changes live."
+        title="Aparência"
+        description="Defina o modo e a cor de destaque do app. A preferência fica salva neste dispositivo e muda em tempo real."
       />
 
       <div className="space-y-4">
@@ -36,7 +36,7 @@ export function AppearancePanel() {
 
         <div
           role="radiogroup"
-          aria-label="Color mode"
+          aria-label="Modo de cor"
           className="grid max-w-md grid-cols-2 gap-3"
         >
           {MODES.map((m) => (

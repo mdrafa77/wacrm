@@ -171,8 +171,8 @@ export function FlowBuilder() {
 
         {state.nodes.length === 0 ? (
           <div className="border-border bg-card/50 text-muted-foreground rounded-lg border border-dashed p-8 text-center text-sm">
-            Add a <strong>Start</strong> node, then a{' '}
-            <strong>Send buttons</strong> node, then a <strong>Handoff</strong>{' '}
+            Adicione um bloco <strong>Início</strong>, depois um bloco{' '}
+            <strong>Enviar botões</strong> e então um bloco <strong>Transferir</strong>{' '}
             — that&apos;s the welcome-menu shape from the brief.
           </div>
         ) : (
@@ -246,7 +246,7 @@ function KeywordsInput({
           commit();
         }
       }}
-      placeholder="support, help, hi"
+      placeholder="suporte, ajuda, olá"
       className="bg-muted"
     />
   );
@@ -267,7 +267,7 @@ function TriggerPanel({
 }) {
   return (
     <section className="border-border bg-card rounded-lg border p-4">
-      <h2 className="text-foreground mb-3 text-sm font-semibold">Trigger</h2>
+      <h2 className="text-foreground mb-3 text-sm font-semibold">Gatilho</h2>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
         <div>
           <label className="text-muted-foreground mb-1 block text-xs">
@@ -347,12 +347,12 @@ function EntryPicker({
   return (
     <section className="border-border bg-card flex items-center gap-3 rounded-lg border p-3">
       <CornerDownRight className="text-primary h-4 w-4 shrink-0" />
-      <span className="text-muted-foreground text-xs">Entry node:</span>
+      <span className="text-muted-foreground text-xs">Bloco inicial:</span>
       <NodeKeySelect
         value={state.entry_node_id}
         nodes={state.nodes}
         onChange={(key) => setState((s) => ({ ...s, entry_node_id: key }))}
-        placeholder="Pick the first node…"
+        placeholder="Escolha o primeiro bloco…"
         className="max-w-xs flex-1"
       />
     </section>
@@ -531,7 +531,7 @@ function NodeConfigWithAdvanced({
           ) : (
             <ChevronDown className="h-3 w-3" />
           )}
-          {showAdvanced ? 'Hide' : 'Show'} advanced
+          {showAdvanced ? 'Hide' : 'Exibir'} advanced
         </button>
         {showAdvanced && (
           <div className="mt-3 flex flex-col gap-3">
@@ -582,7 +582,7 @@ function AddNodeButton({ onAdd }: { onAdd: (type: NodeType) => void }) {
     <DropdownMenu>
       <DropdownMenuTrigger
         className="border-border bg-card text-foreground hover:bg-muted inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium transition-colors"
-        aria-label="Add node"
+        aria-label="Adicionar bloco"
       >
         <Plus className="h-3.5 w-3.5" />
         Add node

@@ -196,7 +196,7 @@ export function ContactDetailView({
 
   async function saveDetails() {
     if (!contactId || !editPhone.trim()) {
-      toast.error('Phone number is required');
+      toast.error('O número de telefone é obrigatório');
       return;
     }
 
@@ -213,9 +213,9 @@ export function ContactDetailView({
       .eq('id', contactId);
 
     if (error) {
-      toast.error('Failed to update contact');
+      toast.error('Falha ao atualizar o contato');
     } else {
-      toast.success('Contact updated');
+      toast.success('Contato atualizado');
       fetchContact();
       onUpdated();
     }
@@ -259,7 +259,7 @@ export function ContactDetailView({
     } = await supabase.auth.getSession();
     const user = session?.user;
     if (!user || !accountId) {
-      toast.error('Not authenticated');
+      toast.error('Não autenticado');
       setSavingNote(false);
       return;
     }
@@ -272,11 +272,11 @@ export function ContactDetailView({
     });
 
     if (error) {
-      toast.error('Failed to add note');
+      toast.error('Falha ao adicionar a observação');
     } else {
       setNewNote('');
       fetchNotes();
-      toast.success('Note added');
+      toast.success('Observação adicionada');
     }
     setSavingNote(false);
   }
@@ -288,10 +288,10 @@ export function ContactDetailView({
       .eq('id', noteId);
 
     if (error) {
-      toast.error('Failed to delete note');
+      toast.error('Falha ao excluir a observação');
     } else {
       setNotes((prev) => prev.filter((n) => n.id !== noteId));
-      toast.success('Note deleted');
+      toast.success('Observação excluída');
     }
   }
 
@@ -321,9 +321,9 @@ export function ContactDetailView({
         if (error) throw error;
       }
 
-      toast.success('Custom fields saved');
+      toast.success('Campos personalizados salvos');
     } catch {
-      toast.error('Failed to save custom fields');
+      toast.error('Falha ao salvar os campos personalizados');
     }
     setSavingCustom(false);
   }
@@ -492,7 +492,7 @@ export function ContactDetailView({
               <TabsContent value="details" className="flex-1 overflow-y-auto px-4 py-3">
                 <div className="space-y-3">
                   <div className="space-y-1.5">
-                    <Label className="text-muted-foreground text-xs">Name</Label>
+                    <Label className="text-muted-foreground text-xs">Nome</Label>
                     <Input
                       value={editName}
                       onChange={(e) => setEditName(e.target.value)}
@@ -510,7 +510,7 @@ export function ContactDetailView({
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <Label className="text-muted-foreground text-xs">Email</Label>
+                    <Label className="text-muted-foreground text-xs">E-mail</Label>
                     <Input
                       value={editEmail}
                       onChange={(e) => setEditEmail(e.target.value)}
@@ -518,7 +518,7 @@ export function ContactDetailView({
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <Label className="text-muted-foreground text-xs">Company</Label>
+                    <Label className="text-muted-foreground text-xs">Empresa</Label>
                     <Input
                       value={editCompany}
                       onChange={(e) => setEditCompany(e.target.value)}
@@ -586,7 +586,7 @@ export function ContactDetailView({
                   <Textarea
                     value={newNote}
                     onChange={(e) => setNewNote(e.target.value)}
-                    placeholder="Write a note..."
+                    placeholder="Escreva uma observação..."
                     className="bg-muted border-border text-foreground placeholder:text-muted-foreground min-h-[60px] text-sm resize-none"
                   />
                   <Button
@@ -631,7 +631,7 @@ export function ContactDetailView({
                           </button>
                         </div>
                         <p className="text-xs text-muted-foreground mt-1.5">
-                          {new Date(note.created_at).toLocaleDateString('en-US', {
+                          {new Date(note.created_at).toLocaleDateString('pt-BR', {
                             month: 'short',
                             day: 'numeric',
                             year: 'numeric',
@@ -699,7 +699,7 @@ export function ContactDetailView({
                     <Loader2 className="size-5 animate-spin text-primary" />
                   </div>
                 ) : deals.length === 0 ? (
-                  <p className="text-xs text-muted-foreground">No deals yet</p>
+                  <p className="text-xs text-muted-foreground">Nenhuma oportunidade ainda</p>
                 ) : (
                   <div className="space-y-2">
                     {deals.map((deal) => (

@@ -35,10 +35,10 @@ export function CustomFieldsManager({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="border-border bg-popover text-popover-foreground sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-popover-foreground">Custom fields</DialogTitle>
+          <DialogTitle className="text-popover-foreground">Campos personalizados</DialogTitle>
           <DialogDescription className="text-muted-foreground">
             Define extra contact fields (e.g. ZIP code, lead source). They
-            appear on every contact and in the “Update Contact Field” automation
+            aparecem em todos os contatos e na automação “Atualizar campo do contato”
             action.
           </DialogDescription>
         </DialogHeader>
@@ -97,7 +97,7 @@ export function CustomFieldsPanel() {
     const name = newName.trim();
     if (!name) return;
     if (!accountId || !user) {
-      toast.error('Your profile is not linked to an account.');
+      toast.error('Seu perfil não está vinculado a uma conta.');
       return;
     }
     if (isDuplicate(name)) {

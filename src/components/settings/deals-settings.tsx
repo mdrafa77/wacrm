@@ -56,7 +56,7 @@ export function DealsSettings() {
       .update({ default_currency: selected })
       .eq("id", accountId);
     if (error) {
-      toast.error("Failed to save default currency");
+      toast.error("Falha ao salvar a moeda padrão");
       setSaving(false);
       return;
     }
@@ -64,14 +64,14 @@ export function DealsSettings() {
     // and every total pick it up without a full reload.
     await refreshProfile();
     setSaving(false);
-    toast.success("Default currency updated");
+    toast.success("Moeda padrão atualizada");
   }
 
   return (
     <section className="max-w-2xl animate-in fade-in-50 duration-200">
       <SettingsPanelHead
-        title="Deals & currency"
-        description="The currency used for new deals and for pipeline and dashboard totals."
+        title="Oportunidades e moeda"
+        description="Moeda usada em novas oportunidades e nos totais dos funis e do painel."
       />
       <Card>
         <CardHeader>
@@ -87,7 +87,7 @@ export function DealsSettings() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid gap-2 sm:max-w-xs">
-            <Label className="text-muted-foreground">Currency</Label>
+            <Label className="text-muted-foreground">Moeda</Label>
             <select
               value={selected}
               onChange={(e) => setSelected(e.target.value)}
@@ -119,7 +119,7 @@ export function DealsSettings() {
                   Saving...
                 </>
               ) : (
-                "Save"
+                "Salvar"
               )}
             </Button>
           )}

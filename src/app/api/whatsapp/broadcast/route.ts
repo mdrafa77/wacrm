@@ -91,7 +91,7 @@ export async function POST(request: Request) {
     const accountId = profile?.account_id as string | undefined
     if (!accountId) {
       return NextResponse.json(
-        { error: 'Your profile is not linked to an account.' },
+        { error: 'Seu perfil não está vinculado a uma conta.' },
         { status: 403 },
       )
     }
@@ -186,7 +186,7 @@ export async function POST(request: Request) {
         results.push({
           phone: recipient.phone,
           status: 'failed',
-          error: 'Invalid phone number format',
+          error: 'Formato de número de telefone inválido',
         })
         failedCount++
         continue
