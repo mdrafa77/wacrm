@@ -84,7 +84,7 @@ export async function PATCH(
     try {
       payload = (await request.json()) as TemplatePayload
     } catch {
-      return NextResponse.json({ error: 'Invalid JSON body.' }, { status: 400 })
+      return NextResponse.json({ error: 'JSON inválido body.' }, { status: 400 })
     }
 
     // RLS handles ownership, but we need the existing row to read
@@ -96,7 +96,7 @@ export async function PATCH(
       .eq('account_id', accountId)
       .maybeSingle()
     if (lookupErr || !existing) {
-      return NextResponse.json({ error: 'Template not found.' }, { status: 404 })
+      return NextResponse.json({ error: 'Modelo não encontrado.' }, { status: 404 })
     }
 
     if (!existing.meta_template_id) {
@@ -132,7 +132,7 @@ export async function PATCH(
       validateTemplatePayload(payload)
     } catch (e) {
       return NextResponse.json(
-        { error: e instanceof Error ? e.message : 'Validation failed.' },
+        { error: e instanceof Error ? e.message : 'Falha na validação.' },
         { status: 400 },
       )
     }
@@ -207,7 +207,7 @@ export async function PATCH(
     if (updErr) {
       return NextResponse.json(
         {
-          error: `Edited on Meta but failed to save locally: ${updErr.message}. Run "Sync from Meta" to recover.`,
+          error: `Edited on Meta but failed to save locally: ${updErr.message}. Run "Sincronizar com a Meta" to recover.`,
         },
         { status: 500 },
       )
@@ -223,7 +223,7 @@ export async function PATCH(
     return NextResponse.json(
       {
         error:
-          error instanceof Error ? error.message : 'Failed to edit template.',
+          error instanceof Error ? error.message : 'Falha ao editar o modelo.',
       },
       { status: 500 },
     )
@@ -274,7 +274,7 @@ export async function DELETE(
       .eq('account_id', accountId)
       .maybeSingle()
     if (lookupErr || !existing) {
-      return NextResponse.json({ error: 'Template not found.' }, { status: 404 })
+      return NextResponse.json({ error: 'Modelo não encontrado.' }, { status: 404 })
     }
 
     if (existing.meta_template_id && !isDryRun()) {
@@ -322,7 +322,7 @@ export async function DELETE(
     return NextResponse.json(
       {
         error:
-          error instanceof Error ? error.message : 'Failed to delete template.',
+          error instanceof Error ? error.message : 'Falha ao excluir modelo.',
       },
       { status: 500 },
     )

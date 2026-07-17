@@ -236,10 +236,10 @@ export function MembersTab() {
       );
       if (!res.ok) {
         const payload = await res.json().catch(() => ({}));
-        toast.error(payload.error || 'Failed to remove member');
+        toast.error(payload.error || 'Falha ao remover membro');
         return;
       }
-      toast.success(`Removed ${removingMember.full_name || 'member'}`);
+      toast.success(`${removingMember.full_name || 'Membro'} removido`);
       setMembers((prev) =>
         prev.filter((m) => m.user_id !== removingMember.user_id),
       );
@@ -259,7 +259,7 @@ export function MembersTab() {
       });
       if (!res.ok) {
         const payload = await res.json().catch(() => ({}));
-        toast.error(payload.error || 'Failed to revoke invitation');
+        toast.error(payload.error || 'Falha ao revogar convite');
         return;
       }
       toast.success('Invitation revoked');
@@ -281,7 +281,7 @@ export function MembersTab() {
   return (
     <section className="animate-in fade-in-50 space-y-6 duration-200">
       <SettingsPanelHead
-        title="Team members"
+        title="Membros da equipe"
         description="People with access to this account. Roles control what each teammate can do."
         action={
           <RequireRole min="admin">
@@ -534,7 +534,7 @@ export function MembersTab() {
                           </span>
                         </div>
                         <p className="mt-0.5 text-xs text-muted-foreground">
-                          Created {fmtDate(inv.created_at)} · {fmtExpiresIn(inv.expires_at)}
+                          Criado em {fmtDate(inv.created_at)} · {fmtExpiresIn(inv.expires_at)}
                         </p>
                       </div>
 
@@ -582,9 +582,9 @@ export function MembersTab() {
             <DialogDescription className="text-muted-foreground">
               Remove{' '}
               <span className="font-medium text-muted-foreground">
-                {removingMember?.full_name || 'this teammate'}
+                {removingMember?.full_name || 'este colega de equipe'}
               </span>{' '}
-              from the account? They&apos;ll be signed out of this account
+              da conta? Essa pessoa será desconectada desta conta
               and given a fresh personal account on their next sign-in. Their
               login isn&apos;t deleted.
             </DialogDescription>

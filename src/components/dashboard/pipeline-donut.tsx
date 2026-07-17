@@ -19,7 +19,7 @@ export function PipelineDonut({ data, loading, currency }: PipelineDonutProps) {
       <header className="border-b border-border px-5 py-4">
         <h2 className="text-sm font-semibold text-foreground">Valor do funil</h2>
         <p className="mt-0.5 text-xs text-muted-foreground">
-          Open deals by stage
+          Oportunidades abertas por etapa
         </p>
       </header>
 

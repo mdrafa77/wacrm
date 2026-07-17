@@ -66,7 +66,7 @@ export async function POST(request: Request) {
     const {
       // `conversation_id` targets an existing thread (inbox). `contact_id`
       // lets a caller initiate from a contact that may have no conversation
-      // yet (Contact detail → Send template) — we find-or-create one below.
+      // yet (Contact detail → Enviar modelo) — we find-or-create one below.
       conversation_id: conversationIdInput,
       contact_id,
       message_type,
@@ -173,7 +173,7 @@ export async function POST(request: Request) {
 
       if (contactErr || !contactRow) {
         return NextResponse.json(
-          { error: 'Contact not found' },
+          { error: 'Contato não encontrado' },
           { status: 404 }
         )
       }
@@ -206,7 +206,7 @@ export async function POST(request: Request) {
     const contact = conversation.contact
     if (!contact?.phone) {
       return NextResponse.json(
-        { error: 'Contact phone number not found' },
+        { error: 'Número de telefone do contato não encontrado' },
         { status: 400 }
       )
     }
@@ -229,7 +229,7 @@ export async function POST(request: Request) {
 
     if (configError || !config) {
       return NextResponse.json(
-        { error: 'WhatsApp not configured. Please set up your WhatsApp integration first.' },
+        { error: 'WhatsApp não configurado. Configure a integração com o WhatsApp primeiro.' },
         { status: 400 }
       )
     }
@@ -318,7 +318,7 @@ export async function POST(request: Request) {
         return NextResponse.json(
           {
             error:
-              'Template row is malformed locally — run "Sync from Meta" in Settings to repair it.',
+              'Template row is malformed locally — run "Sincronizar com a Meta" in Settings to repair it.',
           },
           { status: 500 },
         )
@@ -394,7 +394,7 @@ export async function POST(request: Request) {
 
       if (lastError) throw lastError
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Unknown Meta API error'
+      const message = err instanceof Error ? err.message : 'Erro desconhecido da API da Meta'
       console.error('Meta API send failed for all variants:', message)
       return NextResponse.json(
         { error: `Meta API error: ${message}` },
@@ -492,7 +492,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Error in WhatsApp send POST:', error)
     return NextResponse.json(
-      { error: 'Failed to send message' },
+      { error: 'Falha ao enviar mensagem' },
       { status: 500 }
     )
   }

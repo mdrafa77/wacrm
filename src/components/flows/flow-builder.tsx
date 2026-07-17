@@ -494,7 +494,7 @@ function NodeCard({
 
 // ============================================================
 // Per-node-type config form — wraps the extracted dispatcher with
-// the list-view's "Show advanced" disclosure (which exposes the
+// the list-view's "Exibir avançado" disclosure (which exposes the
 // internal node_key for stable analytics, hidden by default).
 // ============================================================
 
@@ -531,7 +531,7 @@ function NodeConfigWithAdvanced({
           ) : (
             <ChevronDown className="h-3 w-3" />
           )}
-          {showAdvanced ? 'Hide' : 'Exibir'} advanced
+          {showAdvanced ? 'Ocultar opções avançadas' : 'Exibir opções avançadas'}
         </button>
         {showAdvanced && (
           <div className="mt-3 flex flex-col gap-3">

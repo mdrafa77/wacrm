@@ -16,7 +16,7 @@
  * → WhatsApp → Configuration → Webhooks, you must explicitly toggle
  * each of the three fields above. There is no API to do this for
  * Cloud API apps — it's a one-time manual step per app. Until that's
- * done, status updates only land via the manual "Sync from Meta"
+ * done, status updates only land via the manual "Sincronizar com a Meta"
  * button (the legacy fallback, intentionally preserved).
  *
  * ─── Multi-tenant note ────────────────────────────────────────────
@@ -200,7 +200,7 @@ async function handleQualityUpdate(
  * — e.g. Marketing → Utility after content review).
  *
  * For v1 we just log and let the user pull updated components via the
- * existing "Sync from Meta" button — persisting Meta's modified
+ * existing "Sincronizar com a Meta" button — persisting Meta's modified
  * components without showing the user would silently change what they
  * thought they submitted. A future PR could mark the row with a
  * "Meta modified this template" banner.
@@ -210,6 +210,6 @@ function handleComponentsUpdate(value: TemplateComponentsUpdateValue): void {
     '[template-webhook] components updated by Meta for template',
     value.message_template_id,
     value.message_template_name,
-    '— run "Sync from Meta" in Settings to pull the new components.',
+    '— run "Sincronizar com a Meta" in Settings to pull the new components.',
   )
 }

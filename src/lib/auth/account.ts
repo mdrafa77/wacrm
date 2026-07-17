@@ -62,7 +62,7 @@ export class ForbiddenError extends Error {
  *     return toErrorResponse(err);
  *   }
  *
- * Unknown errors collapse to 500 with the generic message — we
+ * Erro desconhecidos collapse to 500 with the generic message — we
  * never leak `err.message` for non-classified errors to keep
  * server internals out of the wire.
  */
@@ -71,7 +71,7 @@ export function toErrorResponse(err: unknown): NextResponse {
     return NextResponse.json({ error: err.message }, { status: err.status });
   }
   console.error("[toErrorResponse] uncategorized error:", err);
-  return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  return NextResponse.json({ error: "Erro interno do servidor" }, { status: 500 });
 }
 
 // ------------------------------------------------------------

@@ -116,14 +116,14 @@ export async function POST(request: Request) {
     try {
       payload = (await request.json()) as TemplatePayload
     } catch {
-      return NextResponse.json({ error: 'Invalid JSON body.' }, { status: 400 })
+      return NextResponse.json({ error: 'JSON inválido body.' }, { status: 400 })
     }
 
     if (payload.category === 'Authentication') {
       return NextResponse.json(
         {
           error:
-            'AUTHENTICATION templates are not yet supported here — create them in Meta WhatsApp Manager and use "Sync from Meta".',
+            'AUTHENTICATION templates are not yet supported here — create them in Meta WhatsApp Manager and use "Sincronizar com a Meta".',
         },
         { status: 400 },
       )
@@ -133,7 +133,7 @@ export async function POST(request: Request) {
       validateTemplatePayload(payload)
     } catch (e) {
       return NextResponse.json(
-        { error: e instanceof Error ? e.message : 'Validation failed.' },
+        { error: e instanceof Error ? e.message : 'Falha na validação.' },
         { status: 400 },
       )
     }
@@ -158,7 +158,7 @@ export async function POST(request: Request) {
         return NextResponse.json(
           {
             error:
-              'WhatsApp not configured. Connect your WhatsApp Business account in Settings first.',
+              'WhatsApp não configurado. Conecte sua conta do WhatsApp Business em Configurações.',
           },
           { status: 400 },
         )
@@ -213,7 +213,7 @@ export async function POST(request: Request) {
         return NextResponse.json(
           {
             error: isRateLimit
-              ? 'Meta rate limit hit (100 template creates per hour). Try again later.'
+              ? 'Meta rate limit hit (100 template creates per hour). Tentar novamente later.'
               : message,
           },
           { status: isRateLimit ? 429 : 502 },
@@ -233,10 +233,10 @@ export async function POST(request: Request) {
     if (upsertErr) {
       // The submit succeeded on Meta's side but we failed to persist
       // locally. That's a data-drift state — surface the meta_template_id
-      // so the user can recover via "Sync from Meta".
+      // so the user can recover via "Sincronizar com a Meta".
       return NextResponse.json(
         {
-          error: `Submitted to Meta but failed to save locally: ${upsertErr.message}. Run "Sync from Meta" to recover.`,
+          error: `Submitted to Meta but failed to save locally: ${upsertErr.message}. Run "Sincronizar com a Meta" to recover.`,
           meta_template_id: metaTemplateId,
         },
         { status: 500 },
@@ -253,7 +253,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          error instanceof Error ? error.message : 'Failed to submit template.',
+          error instanceof Error ? error.message : 'Falha ao enviar template.',
       },
       { status: 500 },
     )

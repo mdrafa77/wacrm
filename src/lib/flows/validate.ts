@@ -60,7 +60,7 @@ export function validateFlowForActivation(
       severity: "error",
       scope: "flow",
       field: "name",
-      message: "Flow name is required.",
+      message: "O nome do fluxo é obrigatório.",
     });
   }
 
@@ -197,7 +197,7 @@ function validateNode(
           scope: "node",
           node_key: node.node_key,
           field: "next_node_key",
-          message: "Start node must point to a next node.",
+          message: "O bloco inicial deve apontar para o próximo bloco.",
         });
       } else if (!knownKeys.has(cfg.next_node_key)) {
         issues.push({
@@ -219,7 +219,7 @@ function validateNode(
           scope: "node",
           node_key: node.node_key,
           field: "text",
-          message: "Send-message node needs a text body.",
+          message: "O bloco de envio de mensagem precisa de um texto.",
         });
       }
       if (!cfg.next_node_key) {
@@ -228,7 +228,7 @@ function validateNode(
           scope: "node",
           node_key: node.node_key,
           field: "next_node_key",
-          message: "Send-message node must point to a next node.",
+          message: "O bloco de envio de mensagem deve apontar para o próximo bloco.",
         });
       } else if (!knownKeys.has(cfg.next_node_key)) {
         issues.push({
@@ -258,7 +258,7 @@ function validateNode(
           scope: "node",
           node_key: node.node_key,
           field: "media_type",
-          message: "Send-media node needs a media type (image, video, or document).",
+          message: "O bloco de mídia precisa de um tipo: imagem, vídeo ou documento.",
         });
       }
       if (!cfg.media_url?.trim()) {
@@ -267,7 +267,7 @@ function validateNode(
           scope: "node",
           node_key: node.node_key,
           field: "media_url",
-          message: "Send-media node needs a file (upload one before activating).",
+          message: "O bloco de mídia precisa de um arquivo. Envie um antes de ativar.",
         });
       }
       // Caption cap mirrors Meta's interactive body cap; documented as a
@@ -287,7 +287,7 @@ function validateNode(
           scope: "node",
           node_key: node.node_key,
           field: "next_node_key",
-          message: "Send-media node must point to a next node.",
+          message: "O bloco de mídia deve apontar para o próximo bloco.",
         });
       } else if (!knownKeys.has(cfg.next_node_key)) {
         issues.push({
@@ -316,7 +316,7 @@ function validateNode(
           scope: "node",
           node_key: node.node_key,
           field: "text",
-          message: "Send-buttons node needs a text body.",
+          message: "O bloco de botões precisa de um texto.",
         });
       }
       const btns = cfg.buttons ?? [];
@@ -326,7 +326,7 @@ function validateNode(
           scope: "node",
           node_key: node.node_key,
           field: "buttons",
-          message: "Send-buttons needs at least one button.",
+          message: "O bloco de botões precisa de pelo menos um botão.",
         });
       }
       if (btns.length > INTERACTIVE_LIMITS.maxButtons) {
@@ -419,7 +419,7 @@ function validateNode(
           scope: "node",
           node_key: node.node_key,
           field: "text",
-          message: "Send-list node needs a text body.",
+          message: "O bloco de lista precisa de um texto.",
         });
       }
       if (!cfg.button_label?.trim()) {
@@ -428,7 +428,7 @@ function validateNode(
           scope: "node",
           node_key: node.node_key,
           field: "button_label",
-          message: "Send-list needs a button label (the tap-to-expand text).",
+          message: "O bloco de lista precisa de um rótulo no botão que abre as opções.",
         });
       }
       const sections = cfg.sections ?? [];
@@ -442,7 +442,7 @@ function validateNode(
           scope: "node",
           node_key: node.node_key,
           field: "sections",
-          message: "Send-list needs at least one row.",
+          message: "O bloco de lista precisa de pelo menos uma opção.",
         });
       }
       if (totalRows > INTERACTIVE_LIMITS.maxListRowsTotal) {
@@ -712,7 +712,7 @@ function validateNode(
         severity: "error",
         scope: "node",
         node_key: node.node_key,
-        message: `Unknown node type "${node.node_type}".`,
+        message: `Tipo de nó desconhecido: "${node.node_type}".`,
       });
   }
 

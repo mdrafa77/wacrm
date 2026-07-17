@@ -60,7 +60,7 @@ export function ContactDetailView({
   const [loading, setLoading] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
 
-  // Send template — lets the business initiate (or re-open) a conversation
+  // Enviar modelo — lets the business initiate (or re-open) a conversation
   // with this contact by sending an approved template. The send route
   // find-or-creates the conversation, so no inbound message is required.
   const [templatePickerOpen, setTemplatePickerOpen] = useState(false);
@@ -357,14 +357,14 @@ export function ContactDetailView({
       const payload = await res.json().catch(() => ({}));
       if (!res.ok) {
         const reason = payload?.error || `HTTP ${res.status}`;
-        toast.error(`Failed to send template: ${reason}`);
+        toast.error(`Falha ao enviar modelo: ${reason}`);
         return;
       }
 
-      toast.success(`Template "${template.name}" sent`);
+      toast.success(`Modelo "${template.name}" enviado`);
     } catch (err) {
-      const reason = err instanceof Error ? err.message : 'network error';
-      toast.error(`Failed to send template: ${reason}`);
+      const reason = err instanceof Error ? err.message : 'erro de rede';
+      toast.error(`Falha ao enviar modelo: ${reason}`);
     } finally {
       setSendingTemplate(false);
     }
@@ -403,10 +403,10 @@ export function ContactDetailView({
                 </Avatar>
                 <div className="flex-1 min-w-0">
                   <SheetTitle className="text-popover-foreground truncate">
-                    {contact.name || 'Unknown'}
+                    {contact.name || 'Desconhecido'}
                   </SheetTitle>
                   <SheetDescription className="text-muted-foreground text-xs mt-0.5">
-                    Contact details
+                    Dados do contato
                   </SheetDescription>
                   <div className="flex flex-wrap items-center gap-3 mt-1.5 text-xs text-muted-foreground">
                     <button
@@ -448,7 +448,7 @@ export function ContactDetailView({
                   ) : (
                     <LayoutTemplate className="size-4" />
                   )}
-                  Send template
+                  Enviar modelo
                 </Button>
               </div>
             </SheetHeader>
@@ -536,7 +536,7 @@ export function ContactDetailView({
                     ) : (
                       <Save className="size-3.5" />
                     )}
-                    Save Changes
+                    Salvar alterações
                   </Button>
                 </div>
               </TabsContent>
@@ -545,11 +545,11 @@ export function ContactDetailView({
               <TabsContent value="tags" className="flex-1 overflow-y-auto px-4 py-3">
                 <div className="space-y-3">
                   <p className="text-xs text-muted-foreground">
-                    Click a tag to add or remove it from this contact.
+                    Clique em uma etiqueta para adicioná-la ou removê-la deste contato.
                   </p>
                   {allTags.length === 0 ? (
                     <p className="text-sm text-muted-foreground">
-                      No tags available. Create tags in Settings.
+                      Nenhuma etiqueta disponível. Crie etiquetas em Configurações.
                     </p>
                   ) : (
                     <div className="flex flex-wrap gap-2">
@@ -600,7 +600,7 @@ export function ContactDetailView({
                     ) : (
                       <Plus className="size-3.5" />
                     )}
-                    Add Note
+                    Adicionar observação
                   </Button>
                 </div>
 
@@ -611,7 +611,7 @@ export function ContactDetailView({
                     </div>
                   ) : notes.length === 0 ? (
                     <p className="text-sm text-muted-foreground text-center py-8">
-                      No notes yet.
+                      Nenhuma observação ainda.
                     </p>
                   ) : (
                     notes.map((note) => (
@@ -653,7 +653,7 @@ export function ContactDetailView({
                   </div>
                 ) : customFields.length === 0 ? (
                   <p className="text-sm text-muted-foreground text-center py-8">
-                    No custom fields defined. Create them in Settings.
+                    Nenhum campo personalizado definido. Crie campos em Configurações.
                   </p>
                 ) : (
                   <div className="space-y-3">
@@ -670,7 +670,7 @@ export function ContactDetailView({
                               [field.id]: e.target.value,
                             }))
                           }
-                          placeholder={`Enter ${field.field_name}...`}
+                          placeholder={`Digite ${field.field_name}...`}
                           className="bg-muted border-border text-foreground h-8 text-sm placeholder:text-muted-foreground"
                         />
                       </div>
@@ -686,7 +686,7 @@ export function ContactDetailView({
                       ) : (
                         <Save className="size-3.5" />
                       )}
-                      Save Custom Fields
+                      Salvar campos personalizados
                     </Button>
                   </div>
                 )}

@@ -158,7 +158,7 @@ export function SettingsOverview({
       section: 'whatsapp',
       loading: whatsappLoading,
       subtitle: !whatsapp?.configured ? (
-        'Not set up yet'
+        'Ainda não configurado'
       ) : whatsapp.connected ? (
         <>
           <StatusDot tone="ok" /> Connected
@@ -272,7 +272,7 @@ export function SettingsOverview({
                 <span className="mt-0.5 flex items-center gap-1.5 text-xs text-muted-foreground">
                   {loading ? (
                     <>
-                      <Loader2 className="size-3 animate-spin" /> Loading…
+                      <Loader2 className="size-3 animate-spin" /> Carregando…
                     </>
                   ) : (
                     subtitle

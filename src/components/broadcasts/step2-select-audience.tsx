@@ -72,8 +72,8 @@ const audienceOptions: {
 ];
 
 const OPERATOR_OPTIONS: { value: CustomFieldOperator; label: string }[] = [
-  { value: 'is', label: 'is' },
-  { value: 'is_not', label: 'is not' },
+  { value: 'is', label: 'é igual a' },
+  { value: 'is_not', label: 'é diferente de' },
   { value: 'contains', label: 'contains' },
 ];
 
@@ -310,7 +310,7 @@ export function Step2SelectAudience({
             <Loader2 className="h-5 w-5 animate-spin text-primary" />
           ) : tags.length === 0 ? (
             <p className="text-xs text-muted-foreground">
-              No tags found. Create tags in Settings.
+              Nenhuma etiqueta encontrada. Crie etiquetas em Configurações.
             </p>
           ) : (
             <div className="flex flex-wrap gap-2">

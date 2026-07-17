@@ -37,7 +37,7 @@ export function CustomFieldsManager({
         <DialogHeader>
           <DialogTitle className="text-popover-foreground">Campos personalizados</DialogTitle>
           <DialogDescription className="text-muted-foreground">
-            Define extra contact fields (e.g. ZIP code, lead source). They
+            Defina campos adicionais para contatos (ex.: CEP, origem do lead). Eles
             aparecem em todos os contatos e na automação “Atualizar campo do contato”
             action.
           </DialogDescription>
@@ -115,10 +115,10 @@ export function CustomFieldsPanel() {
     setCreating(false);
 
     if (error) {
-      toast.error('Could not create field. You may not have permission.');
+      toast.error('Não foi possível criar o campo. Talvez você não tenha permissão.');
       return;
     }
-    toast.success(`Created "${name}".`);
+    toast.success(`Campo "${name}" criado.`);
     setNewName('');
     await fetchFields();
   }
@@ -142,7 +142,7 @@ export function CustomFieldsPanel() {
       .eq('id', field.id);
     setBusyId(null);
     if (error) {
-      toast.error('Could not rename field.');
+      toast.error('Não foi possível renomear o campo.');
       return false;
     }
     await fetchFields();
@@ -164,7 +164,7 @@ export function CustomFieldsPanel() {
       .eq('id', field.id);
     setBusyId(null);
     if (error) {
-      toast.error('Could not delete field.');
+      toast.error('Não foi possível excluir o campo.');
       return;
     }
     toast.success(`Deleted "${field.field_name}".`);
@@ -184,7 +184,7 @@ export function CustomFieldsPanel() {
               void handleCreate();
             }
           }}
-          placeholder="New field name…"
+          placeholder="Nome do novo campo…"
           className="bg-muted text-foreground"
         />
         <Button
@@ -206,7 +206,7 @@ export function CustomFieldsPanel() {
         {loading ? (
           <div className="flex items-center justify-center gap-2 py-8 text-sm text-muted-foreground">
             <Loader2 className="size-4 animate-spin" />
-            Loading…
+            Carregando…
           </div>
         ) : fields.length === 0 ? (
           <p className="py-8 text-center text-sm text-muted-foreground">
@@ -272,7 +272,7 @@ function FieldRow({
         size="icon-sm"
         disabled={busy}
         onClick={() => onDelete(field)}
-        title="Delete field"
+        title="Excluir campo"
         className="shrink-0 text-muted-foreground hover:text-red-400"
       >
         {busy ? (

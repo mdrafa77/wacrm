@@ -88,17 +88,17 @@ interface StepMeta {
 }
 
 const STEP_META: Record<AutomationStepType, StepMeta> = {
-  send_message: { label: "Send Message", icon: MessageSquare, border: "border-l-primary" },
-  send_template: { label: "Send Template", icon: FileText, border: "border-l-primary" },
-  add_tag: { label: "Add Tag", icon: Tag, border: "border-l-primary" },
-  remove_tag: { label: "Remove Tag", icon: TagIcon, border: "border-l-primary" },
+  send_message: { label: "Enviar mensagem", icon: MessageSquare, border: "border-l-primary" },
+  send_template: { label: "Enviar modelo", icon: FileText, border: "border-l-primary" },
+  add_tag: { label: "Adicionar etiqueta", icon: Tag, border: "border-l-primary" },
+  remove_tag: { label: "Remover etiqueta", icon: TagIcon, border: "border-l-primary" },
   assign_conversation: { label: "Assign Conversation", icon: UserCheck, border: "border-l-primary" },
   update_contact_field: { label: "Atualizar campo do contato", icon: PencilLine, border: "border-l-primary" },
-  create_deal: { label: "Create Deal", icon: Briefcase, border: "border-l-primary" },
+  create_deal: { label: "Criar oportunidade", icon: Briefcase, border: "border-l-primary" },
   wait: { label: "Aguardar", icon: Hourglass, border: "border-l-border" },
   condition: { label: "Condição (Se/Senão)", icon: GitBranch, border: "border-l-amber-500" },
-  send_webhook: { label: "Send Webhook", icon: Webhook, border: "border-l-primary" },
-  close_conversation: { label: "Close Conversation", icon: CircleSlash, border: "border-l-primary" },
+  send_webhook: { label: "Enviar webhook", icon: Webhook, border: "border-l-primary" },
+  close_conversation: { label: "Encerrar conversa", icon: CircleSlash, border: "border-l-primary" },
 }
 
 const ADDABLE_STEPS: AutomationStepType[] = [
@@ -399,7 +399,7 @@ function SendTemplateFields({
   if (templates.length === 0) {
     return (
       <>
-        <FieldBlock label="Template name">
+        <FieldBlock label="Nome do modelo">
           <Input
             value={templateName}
             onChange={(e) =>
@@ -1053,7 +1053,7 @@ function StepEditor({
   switch (step.step_type) {
     case "send_message":
       return (
-        <FieldBlock label="Message text">
+        <FieldBlock label="Texto da mensagem">
           <Textarea
             value={(cfg.text as string) ?? ""}
             onChange={(e) => set({ text: e.target.value })}
@@ -1125,7 +1125,7 @@ function StepEditor({
     case "create_deal":
       return (
         <>
-          <FieldBlock label="Pipeline id">
+          <FieldBlock label="ID do funil">
             <Input
               value={(cfg.pipeline_id as string) ?? ""}
               onChange={(e) => set({ pipeline_id: e.target.value })}

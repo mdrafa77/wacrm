@@ -222,7 +222,7 @@ export function DealForm({
       return;
     }
     toast.success(
-      status === "won" ? "Marked as won" : status === "lost" ? "Marked as lost" : "Deal reopened",
+      status === "won" ? "Marcada como ganha" : status === "lost" ? "Marcada como perdida" : "Oportunidade reaberta",
     );
     onOpenChange(false);
     onSaved();
@@ -252,7 +252,7 @@ export function DealForm({
         <div className="flex h-full flex-col">
           <SheetHeader className="border-b border-border/50 p-4">
             <SheetTitle className="text-popover-foreground">
-              {deal ? "Edit Deal" : "Nova oportunidade"}
+              {deal ? "Editar oportunidade" : "Nova oportunidade"}
             </SheetTitle>
           </SheetHeader>
 
@@ -391,7 +391,7 @@ export function DealForm({
                     ) : (
                       <>
                         <Check className="mr-1 h-4 w-4" />
-                        Mark as Won
+                        Marcar como ganha
                       </>
                     )}
                   </Button>
@@ -406,7 +406,7 @@ export function DealForm({
                     ) : (
                       <>
                         <X className="mr-1 h-4 w-4" />
-                        Mark as Lost
+                        Marcar como perdida
                       </>
                     )}
                   </Button>
@@ -440,7 +440,7 @@ export function DealForm({
                 disabled={saving || !title.trim() || !contactId || !stageId}
                 className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90"
               >
-                {saving ? "Salvando..." : deal ? "Save Changes" : "Create Deal"}
+                {saving ? "Salvando..." : deal ? "Salvar alterações" : "Criar oportunidade"}
               </Button>
             </div>
 
@@ -474,7 +474,7 @@ export function DealForm({
                   className="mt-3 flex w-full items-center justify-center gap-1 text-xs text-red-400 hover:text-red-300"
                 >
                   <Trash2 className="h-3 w-3" />
-                  Delete Deal
+                  Excluir oportunidade
                 </button>
               ))}
           </div>

@@ -336,7 +336,7 @@ export function ImportModal({
           tagIdByKey
         );
       } catch {
-        toast.warning('Contacts imported, but some tag assignments failed.');
+        toast.warning('Os contatos foram importados, mas algumas etiquetas não puderam ser atribuídas.');
       }
 
       setResult({ imported, skipped, failed, tagsAssigned });
@@ -356,7 +356,7 @@ export function ImportModal({
         const more =
           skippedNames.length > 3 ? ` (+${skippedNames.length - 3} more)` : '';
         toast.info(
-          `Unknown tags skipped (create them in Settings first): ${sample}${more}`
+          `Etiquetas desconhecidas ignoradas (crie-as primeiro em Configurações): ${sample}${more}`
         );
       }
       if (skipped > 0) {
@@ -368,7 +368,7 @@ export function ImportModal({
         );
       }
     } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : 'Import failed';
+      const message = err instanceof Error ? err.message : 'Falha na importação';
       toast.error(message);
     } finally {
       setImporting(false);

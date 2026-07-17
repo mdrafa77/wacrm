@@ -100,7 +100,7 @@ export function toApiErrorResponse(err: unknown): NextResponse {
   }
   console.error('[api/v1] uncategorized error:', err);
   return NextResponse.json(
-    { error: { code: 'internal', message: 'Internal server error' } },
+    { error: { code: 'internal', message: 'Erro interno do servidor' } },
     { status: 500 }
   );
 }

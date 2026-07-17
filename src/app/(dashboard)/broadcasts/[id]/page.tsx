@@ -179,7 +179,7 @@ export default function BroadcastDetailPage() {
         if (recsError) throw recsError;
         setRecipients(recs ?? []);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load broadcast');
+        setError(err instanceof Error ? err.message : 'Falha ao carregar campanha');
       } finally {
         setLoading(false);
       }
@@ -236,7 +236,7 @@ export default function BroadcastDetailPage() {
       .eq('id', broadcastId);
     setDeleting(false);
     if (delErr) {
-      toast.error(`Failed to delete: ${delErr.message}`);
+      toast.error(`Falha ao excluir: ${delErr.message}`);
       return;
     }
     toast.success('Campanha excluída');
@@ -297,14 +297,14 @@ export default function BroadcastDetailPage() {
               <span>Modelo: {broadcast.template_name}</span>
               <span>-</span>
               <span>
-                Created {new Date(broadcast.created_at).toLocaleDateString()}
+                Criada em {new Date(broadcast.created_at).toLocaleDateString('pt-BR')}
               </span>
             </div>
           </div>
         </div>
 
         {/* Delete — inline-confirm pattern matches the pipeline-settings
-            "Delete Pipeline" flow. Mid-send broadcasts can't be deleted
+            "Excluir funil" flow. Mid-send broadcasts can't be deleted
             because orphaning in-flight Meta messages would leave the
             funnel inconsistent. */}
         {confirmDelete ? (
@@ -337,7 +337,7 @@ export default function BroadcastDetailPage() {
             title={
               broadcast.status === 'sending'
                 ? 'Não é possível excluir enquanto a campanha está sendo enviada'
-                : 'Delete this broadcast'
+                : 'Excluir esta campanha'
             }
             className="border-red-500/30 bg-transparent text-red-400 hover:bg-red-500/10 disabled:opacity-40"
           >
@@ -400,7 +400,7 @@ export default function BroadcastDetailPage() {
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border px-4 py-3">
           <h2 className="text-sm font-medium text-foreground">
             Recipients ({filteredRecipients.length}
-            {statusFilter !== 'all' ? ` of ${recipients.length}` : ''})
+            {statusFilter !== 'all' ? ` de ${recipients.length}` : ''})
           </h2>
           <div className="flex items-center gap-2">
             <DropdownMenu>
@@ -485,7 +485,7 @@ export default function BroadcastDetailPage() {
                   return (
                     <TableRow key={recipient.id} className="border-border">
                       <TableCell className="font-medium text-foreground">
-                        {recipient.contact?.name ?? 'Unknown'}
+                        {recipient.contact?.name ?? 'Desconhecido'}
                       </TableCell>
                       <TableCell className="text-muted-foreground">
                         {recipient.contact?.phone ?? '-'}

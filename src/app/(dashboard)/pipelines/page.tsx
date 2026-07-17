@@ -62,7 +62,7 @@ export default function PipelinesPage() {
   const [creating, setCreating] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
-  // Deal form state is lifted here so both the top-bar "Add Deal" and
+  // Deal form state is lifted here so both the top-bar "Adicionar oportunidade" and
   // the per-column "+" trigger the same Sheet.
   const [dealFormOpen, setDealFormOpen] = useState(false);
   const [editingDeal, setEditingDeal] = useState<Deal | null>(null);
@@ -383,7 +383,7 @@ export default function PipelinesPage() {
             className="bg-primary text-primary-foreground hover:bg-primary/90"
           >
             <Plus className="mr-1 h-4 w-4" />
-            Add Deal
+            Adicionar oportunidade
           </GatedButton>
         </div>
       </div>
@@ -439,7 +439,7 @@ export default function PipelinesPage() {
               }}
             />
             <p className="mt-2 text-xs text-muted-foreground">
-              Default stages (New Lead → Won) will be created automatically.
+              As etapas padrão (Novo lead → Ganha) serão criadas automaticamente.
             </p>
           </div>
           <DialogFooter className="bg-popover/50 border-border">

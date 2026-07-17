@@ -214,7 +214,7 @@ export function ContactForm({
         }
         return;
       }
-      const message = err instanceof Error ? err.message : 'Failed to save contact';
+      const message = err instanceof Error ? err.message : 'Falha ao salvar contato';
       toast.error(message);
     } finally {
       setSaving(false);
@@ -230,7 +230,7 @@ export function ContactForm({
           </DialogTitle>
           <DialogDescription className="text-muted-foreground">
             {isEdit
-              ? 'Update the contact details below.'
+              ? 'Atualize os dados do contato abaixo.'
               : 'Preencha os dados para criar um novo contato.'}
           </DialogDescription>
         </DialogHeader>
@@ -276,8 +276,8 @@ export function ContactForm({
                 <div className="space-y-1">
                   <p>
                     {dupMatch.exact
-                      ? 'A contact with this phone number already exists.'
-                      : 'A contact with a very similar number already exists.'}
+                      ? 'Já existe um contato com este número de telefone.'
+                      : 'Já existe um contato com um número muito parecido.'}
                   </p>
                   {onViewExisting && (
                     <button
@@ -292,7 +292,7 @@ export function ContactForm({
               </div>
             ) : (
               <p className="text-xs text-muted-foreground">
-                Include country code, e.g. +1 for US
+                Inclua o código do país, ex.: +55 para o Brasil
               </p>
             )}
           </div>
@@ -329,11 +329,11 @@ export function ContactForm({
             {loadingTags ? (
               <div className="flex items-center gap-2 text-muted-foreground text-sm">
                 <Loader2 className="size-3 animate-spin" />
-                Loading tags...
+                Carregando etiquetas...
               </div>
             ) : tags.length === 0 ? (
               <p className="text-xs text-muted-foreground">
-                No tags available. Create tags in Settings.
+                Nenhuma etiqueta disponível. Crie etiquetas em Configurações.
               </p>
             ) : (
               <div className="flex flex-wrap gap-1.5">

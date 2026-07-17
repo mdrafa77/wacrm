@@ -284,8 +284,8 @@ export function Step3Personalize({
           {headerMediaError && (
             <p className="mt-1.5 text-xs text-amber-300">
               {headerMediaError === 'missing'
-                ? 'A media URL is required to send this template.'
-                : 'Enter a valid http(s) URL.'}
+                ? 'É necessária uma URL de mídia para enviar este modelo.'
+                : 'Digite uma URL http(s) válida.'}
             </p>
           )}
         </div>
@@ -386,7 +386,7 @@ export function Step3Personalize({
                                 ? 'Carregando…'
                                 : customFields.length === 0
                                   ? 'Nenhum campo personalizado'
-                                  : 'Select custom field…'
+                                  : 'Selecione um campo personalizado…'
                             }
                           />
                         </SelectTrigger>

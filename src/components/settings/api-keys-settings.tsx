@@ -81,7 +81,7 @@ export function ApiKeysSettings() {
       const res = await fetch('/api/account/api-keys', { cache: 'no-store' });
       if (!res.ok) {
         const payload = await res.json().catch(() => ({}));
-        toast.error(payload.error || 'Failed to load API keys');
+        toast.error(payload.error || 'Falha ao carregar chaves de API');
         return;
       }
       const data = (await res.json()) as { keys: ApiKey[] };
@@ -106,7 +106,7 @@ export function ApiKeysSettings() {
       });
       if (!res.ok) {
         const payload = await res.json().catch(() => ({}));
-        toast.error(payload.error || 'Failed to revoke key');
+        toast.error(payload.error || 'Falha ao revogar a chave');
         return;
       }
       toast.success(`Revoked "${key.name}"`);
@@ -135,7 +135,7 @@ export function ApiKeysSettings() {
   return (
     <section className="animate-in fade-in-50 space-y-6 duration-200">
       <SettingsPanelHead
-        title="API keys"
+        title="Chaves de API"
         description={
           <>
             Keys authenticate the public REST API (
@@ -148,7 +148,7 @@ export function ApiKeysSettings() {
           <RequireRole min="admin">
             <Button onClick={() => setCreateOpen(true)}>
               <Plus className="size-4" />
-              New API key
+              Nova chave de API
             </Button>
           </RequireRole>
         }
@@ -159,7 +159,7 @@ export function ApiKeysSettings() {
           <CardContent className="flex flex-col items-center justify-center py-10 text-center">
             <KeyRound className="text-muted-foreground size-6" />
             <p className="text-muted-foreground mt-2 text-sm">
-              No API keys yet.
+              Nenhuma chave de API ainda.
             </p>
             {canEditSettings ? (
               <p className="text-muted-foreground mt-1 text-xs">
@@ -213,7 +213,7 @@ export function ApiKeysSettings() {
                       <div className="mt-1.5 flex flex-wrap gap-1">
                         {k.scopes.length === 0 ? (
                           <span className="text-muted-foreground text-xs">
-                            No scopes
+                            Nenhuma permissão
                           </span>
                         ) : (
                           k.scopes.map((s) => (
@@ -227,7 +227,7 @@ export function ApiKeysSettings() {
                         )}
                       </div>
                       <p className="text-muted-foreground mt-1.5 text-xs">
-                        Created {fmtDate(k.created_at)}
+                        Criada em {fmtDate(k.created_at)}
                         {' · '}
                         {k.last_used_at
                           ? `last used ${fmtDate(k.last_used_at)}`
@@ -308,7 +308,7 @@ function CreateKeyDialog({
   async function handleCreate() {
     const trimmed = name.trim();
     if (!trimmed) {
-      toast.error('Give the key a name');
+      toast.error('Dê um nome à chave');
       return;
     }
     setSubmitting(true);
@@ -320,7 +320,7 @@ function CreateKeyDialog({
       });
       const payload = await res.json().catch(() => ({}));
       if (!res.ok) {
-        toast.error(payload.error || 'Failed to create key');
+        toast.error(payload.error || 'Falha ao criar a chave');
         return;
       }
       setCreatedKey(payload.plaintext as string);
@@ -356,7 +356,7 @@ function CreateKeyDialog({
           <>
             <DialogHeader>
               <DialogTitle className="text-popover-foreground">
-                Copy your API key
+                Copie sua chave de API
               </DialogTitle>
               <DialogDescription className="text-muted-foreground">
                 This is the only time the full key is shown. Store it somewhere
@@ -395,7 +395,7 @@ function CreateKeyDialog({
           <>
             <DialogHeader>
               <DialogTitle className="text-popover-foreground">
-                New API key
+                Nova chave de API
               </DialogTitle>
               <DialogDescription className="text-muted-foreground">
                 Name it after the integration that will use it, and grant only
@@ -412,7 +412,7 @@ function CreateKeyDialog({
                   id="api-key-name"
                   value={name}
                   maxLength={80}
-                  placeholder="e.g. Zapier automation"
+                  placeholder="ex.: Automação do Zapier"
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>

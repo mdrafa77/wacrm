@@ -282,18 +282,18 @@ export function TemplateManager() {
       toast.success(
         data.dry_run
           ? isEdit
-            ? 'Template updated (dry-run — no Meta call)'
-            : 'Template saved (dry-run — no Meta call)'
+            ? 'Modelo atualizado em simulação — nenhuma chamada à Meta'
+            : 'Modelo salvo em simulação — nenhuma chamada à Meta'
           : isEdit
             ? 'Edit submitted — Meta typically reviews within 24 hours.'
-            : 'Submitted to Meta — typical review time is 24 hours. Status updates automatically.',
+            : 'Enviado à Meta — a análise costuma levar 24 horas. O status será atualizado automaticamente.',
       );
       setDialogOpen(false);
       setForm(emptyForm);
       setEditingId(null);
     } catch (err) {
       console.error('Submit error:', err);
-      toast.error(err instanceof Error ? err.message : 'Failed to submit');
+      toast.error(err instanceof Error ? err.message : 'Falha ao enviar');
     } finally {
       setSubmitting(false);
     }
@@ -321,21 +321,21 @@ export function TemplateManager() {
         );
         const suffix =
           data.errors.length > 3 ? `, +${data.errors.length - 3} more` : '';
-        toast.error(`Failed to sync: ${preview.join(', ')}${suffix}`);
+        toast.error(`Falha ao sincronizar: ${preview.join(', ')}${suffix}`);
       }
       if (data.truncated) {
         // Use error (not warning) so the message survives long
         // enough to read — sonner's `warning` auto-dismisses on
         // the same short timer as `success`.
         toast.error(
-          'Synced the first 2000 templates only — your account has more. Sync again to continue, or contact support if this persists.',
+          'Somente os primeiros 2.000 modelos foram sincronizados. Sincronize novamente para continuar ou contate o suporte se o problema persistir.',
           { duration: 10000 },
         );
       }
       await fetchTemplates(user.id);
     } catch (err) {
       console.error('Template sync error:', err);
-      toast.error(err instanceof Error ? err.message : 'Failed to sync templates');
+      toast.error(err instanceof Error ? err.message : 'Falha ao sincronizar modelos');
     } finally {
       setSyncing(false);
     }
@@ -361,7 +361,7 @@ export function TemplateManager() {
       setTemplateToDelete(null);
     } catch (err) {
       console.error('Delete error:', err);
-      toast.error(err instanceof Error ? err.message : 'Failed to delete template');
+      toast.error(err instanceof Error ? err.message : 'Falha ao excluir modelo');
     } finally {
       setDeletingId(null);
     }
@@ -458,7 +458,7 @@ export function TemplateManager() {
 
   async function handleHeaderImageFile(file: File) {
     if (!['image/jpeg', 'image/png'].includes(file.type)) {
-      toast.error('Header image must be a JPEG or PNG.');
+      toast.error('A imagem do cabeçalho deve ser JPEG ou PNG.');
       return;
     }
     if (file.size > MEDIA_MAX_BYTES_BY_KIND.image) {
@@ -482,7 +482,7 @@ export function TemplateManager() {
   return (
     <section className="animate-in fade-in-50 space-y-4 duration-200">
       <SettingsPanelHead
-        title="Message templates"
+        title="Modelos de mensagem"
         description={
           'Crie modelos e envie-os à Meta para aprovação. Use "Sincronizar com a Meta" para importar modelos aprovados em outro lugar.'
         }
@@ -492,10 +492,10 @@ export function TemplateManager() {
               variant="outline"
               onClick={handleSyncFromMeta}
               disabled={syncing}
-              title="Pull approved templates from your Meta WhatsApp Business Account"
+              title="Importar modelos aprovados da sua conta do WhatsApp Business da Meta"
             >
               <RefreshCw className={`size-4 ${syncing ? 'animate-spin' : ''}`} />
-              {syncing ? 'Syncing…' : 'Sync from Meta'}
+              {syncing ? 'Sincronizando…' : 'Sincronizar com a Meta'}
             </Button>
             <Button onClick={openCreate}>
               <Plus className="size-4" />
@@ -604,13 +604,13 @@ export function TemplateManager() {
                       disabled={deletingId === template.id}
                       aria-label={
                         template.meta_template_id
-                          ? 'Delete template from Meta and locally'
-                          : 'Delete template locally'
+                          ? 'Excluir modelo da Meta e localmente'
+                          : 'Excluir modelo localmente'
                       }
                       title={
                         template.meta_template_id
-                          ? 'Delete from Meta and locally'
-                          : 'Delete locally'
+                          ? 'Excluir da Meta e localmente'
+                          : 'Excluir localmente'
                       }
                       className="text-muted-foreground hover:text-red-400 hover:bg-red-950/30 h-8 w-8"
                     >
@@ -645,8 +645,8 @@ export function TemplateManager() {
             </DialogTitle>
             <DialogDescription className="text-muted-foreground">
               {editingId
-                ? 'Save your changes to re-submit to Meta. Status will flip back to PENDING during review.'
-                : 'Build a template and submit it to Meta for approval. Once approved, you can use it in broadcasts and the inbox.'}
+                ? 'Salve as alterações para reenviar à Meta. O status voltará para PENDENTE durante a análise.'
+                : 'Crie um modelo e envie-o à Meta para aprovação. Após aprovado, use-o em campanhas e na caixa de entrada.'}
             </DialogDescription>
           </DialogHeader>
 
@@ -654,10 +654,9 @@ export function TemplateManager() {
             <div className="flex items-start gap-2 rounded border border-amber-700/40 bg-amber-950/30 px-3 py-2 text-xs text-amber-300">
               <AlertCircle className="size-4 mt-0.5 shrink-0" />
               <p>
-                AUTHENTICATION templates have a fixed body + OTP button shape
-                that needs a different builder. Create them in Meta WhatsApp
-                Manager por enquanto e use <strong>Sincronizar com a Meta</strong> para
-                bring them in.
+                Modelos de AUTENTICAÇÃO possuem corpo e botão OTP fixos e
+                precisam de outro editor. Crie-os no Gerenciador do WhatsApp da
+                Meta e use <strong>Sincronizar com a Meta</strong> para importá-los.
               </p>
             </div>
           )}
@@ -666,7 +665,7 @@ export function TemplateManager() {
             <div className="space-y-2">
               <Label className="text-muted-foreground">Nome do modelo</Label>
               <Input
-                placeholder="e.g. order_confirmation"
+                placeholder="ex.: confirmacao_pedido"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 disabled={editingId !== null}
@@ -701,7 +700,11 @@ export function TemplateManager() {
                         value={cat}
                         className="text-popover-foreground focus:bg-muted focus:text-popover-foreground"
                       >
-                        {cat}
+                        {cat === 'Marketing'
+                          ? 'Marketing'
+                          : cat === 'Utility'
+                            ? 'Utilidade'
+                            : 'Autenticação'}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -727,7 +730,7 @@ export function TemplateManager() {
                 </datalist>
                 <p className="text-[11px] text-muted-foreground">
                   {editingId
-                    ? 'Language is fixed once a template exists on Meta.'
+                    ? 'O idioma não pode ser alterado após o modelo existir na Meta.'
                     : (
                         <>
                           Deve corresponder exatamente ao código da Meta — <code>en_US</code>{' '}
@@ -854,7 +857,7 @@ export function TemplateManager() {
                   <p className="text-[11px] text-muted-foreground leading-relaxed">
                     {form.header_format === 'image'
                       ? 'Envie um JPEG/PNG (≤5 MB, recomendação de ≥800×418 px) ou cole um link HTTPS público — o arquivo será enviado automaticamente à Meta para análise.'
-                      : 'Must be a publicly accessible HTTPS link. Meta fetches it once during review, so it needs to stay live for ~24 hrs.'}
+                      : 'Deve ser um link HTTPS acessível publicamente. A Meta o consulta durante a análise, então mantenha-o ativo por cerca de 24 horas.'}
                     {form.header_format === 'video' &&
                       ' Recommended: MP4 / 3GPP, ≤16 MB, ≤60 seconds.'}
                     {form.header_format === 'document' &&
@@ -1042,7 +1045,7 @@ export function TemplateManager() {
                       )}
                       {btn.type === 'COPY_CODE' && (
                         <Input
-                          placeholder="Example code (e.g. SUMMER20)"
+                          placeholder="Código de exemplo (ex.: VERAO20)"
                           value={btn.example}
                           onChange={(e) =>
                             updateButton(i, { example: e.target.value })
@@ -1076,9 +1079,9 @@ export function TemplateManager() {
                   {editingId ? 'Saving…' : 'Submitting…'}
                 </>
               ) : editingId ? (
-                'Save & Resubmit'
+                'Salvar e reenviar'
               ) : (
-                'Submit for Approval'
+                'Enviar para aprovação'
               )}
             </Button>
           </DialogFooter>

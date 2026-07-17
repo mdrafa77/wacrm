@@ -160,7 +160,7 @@ export async function GET(request: Request) {
   } catch (error) {
     console.error('Error in webhook GET verification:', error)
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Erro interno do servidor' },
       { status: 500 }
     )
   }
@@ -185,7 +185,7 @@ export async function POST(request: Request) {
   try {
     body = JSON.parse(rawBody)
   } catch {
-    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
+    return NextResponse.json({ error: 'JSON inválido' }, { status: 400 })
   }
 
   // Process AFTER the response so we ack Meta within their ~20s timeout

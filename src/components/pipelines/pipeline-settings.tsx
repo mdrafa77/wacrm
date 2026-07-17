@@ -210,7 +210,7 @@ export function PipelineSettings({
               <AlertTriangle className="h-5 w-5 shrink-0 text-red-400" />
               <div>
                 <p className="text-sm font-medium text-red-400">
-                  Delete Pipeline
+                  Excluir funil
                 </p>
                 <p className="mt-1 text-xs text-muted-foreground">
                   This will archive all deals in this pipeline. This cannot be
@@ -231,7 +231,7 @@ export function PipelineSettings({
                 disabled={deleting}
                 className="bg-red-600 text-white hover:bg-red-700"
               >
-                {deleting ? "Excluindo..." : "Delete Pipeline"}
+                {deleting ? "Excluindo..." : "Excluir funil"}
               </Button>
             </div>
           </div>
@@ -329,7 +329,7 @@ export function PipelineSettings({
                 className="w-full border-border bg-transparent text-muted-foreground hover:bg-muted"
               >
                 <Plus className="mr-1 h-3 w-3" />
-                Create a new pipeline
+                Criar um novo funil
               </Button>
             </div>
 
@@ -339,7 +339,7 @@ export function PipelineSettings({
                 onClick={() => setShowDeleteConfirm(true)}
                 className="mr-auto bg-red-600 hover:bg-red-700"
               >
-                Delete Pipeline
+                Excluir funil
               </Button>
               <Button
                 variant="outline"
@@ -353,7 +353,7 @@ export function PipelineSettings({
                 disabled={saving || !name.trim()}
                 className="bg-primary text-primary-foreground hover:bg-primary/90"
               >
-                {saving ? "Salvando..." : "Save Changes"}
+                {saving ? "Salvando..." : "Salvar alterações"}
               </Button>
             </DialogFooter>
           </>

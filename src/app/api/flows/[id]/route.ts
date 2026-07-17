@@ -96,7 +96,7 @@ export async function PUT(
 
   const body = (await request.json().catch(() => null)) as PutBody | null
   if (!body) {
-    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
+    return NextResponse.json({ error: 'JSON inválido' }, { status: 400 })
   }
   if (body.name !== undefined && !body.name.trim()) {
     return NextResponse.json(

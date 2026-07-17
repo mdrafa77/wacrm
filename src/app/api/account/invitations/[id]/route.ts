@@ -51,7 +51,7 @@ export async function DELETE(
     if (error) {
       console.error("[DELETE /api/account/invitations/[id]] error:", error);
       return NextResponse.json(
-        { error: "Failed to revoke invitation" },
+        { error: "Falha ao revogar convite" },
         { status: 500 },
       );
     }

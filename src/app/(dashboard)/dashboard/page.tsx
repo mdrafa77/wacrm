@@ -160,7 +160,7 @@ export default function DashboardPage() {
               title="Valor das oportunidades abertas"
               value={formatCurrency(metrics.openDealsValue, defaultCurrency)}
               icon={DollarSign}
-              subtitle={`${metrics.openDealsCount} open deal${metrics.openDealsCount === 1 ? '' : 's'}`}
+              subtitle={`${metrics.openDealsCount} oportunidade${metrics.openDealsCount === 1 ? '' : 's'} aberta${metrics.openDealsCount === 1 ? '' : 's'}`}
             />
             <MetricCard
               title="Mensagens enviadas hoje"

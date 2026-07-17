@@ -91,7 +91,7 @@ export async function PATCH(request: Request) {
     if (error) {
       console.error("[PATCH /api/account] update error:", error);
       return NextResponse.json(
-        { error: "Failed to update account" },
+        { error: "Falha ao atualizar a conta" },
         { status: 500 },
       );
     }

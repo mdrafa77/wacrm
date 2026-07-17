@@ -36,7 +36,7 @@ export function PasswordForm() {
       return;
     }
     if (next.length < MIN_PASSWORD) {
-      setConfirmError(`Password must be at least ${MIN_PASSWORD} characters`);
+      setConfirmError(`A senha deve ter pelo menos ${MIN_PASSWORD} characters`);
       return;
     }
     if (next !== confirm) {
@@ -64,7 +64,7 @@ export function PasswordForm() {
         password: next,
       });
       if (updateError) {
-        toast.error(`Password update failed: ${updateError.message}`);
+        toast.error(`Falha ao atualizar a senha: ${updateError.message}`);
         return;
       }
 
@@ -73,7 +73,7 @@ export function PasswordForm() {
       setConfirm('');
       toast.success('Senha atualizada');
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Unknown error';
+      const msg = err instanceof Error ? err.message : 'Erro desconhecido';
       toast.error(msg);
     } finally {
       setSaving(false);
@@ -97,7 +97,7 @@ export function PasswordForm() {
         <form onSubmit={onSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="current-password" className="text-foreground">
-              Current password
+              Senha atual
             </Label>
             <Input
               id="current-password"
@@ -113,7 +113,7 @@ export function PasswordForm() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="new-password" className="text-foreground">
-                New password
+                Nova senha
               </Label>
               <Input
                 id="new-password"
@@ -128,7 +128,7 @@ export function PasswordForm() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="confirm-password" className="text-foreground">
-                Confirm new password
+                Confirmar nova senha
               </Label>
               <Input
                 id="confirm-password"

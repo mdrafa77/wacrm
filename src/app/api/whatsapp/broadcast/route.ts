@@ -144,7 +144,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            'WhatsApp not configured. Please set up your WhatsApp integration first.',
+            'WhatsApp não configurado. Configure a integração com o WhatsApp primeiro.',
         },
         { status: 400 }
       )
@@ -168,7 +168,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            'Template row is malformed locally — run "Sync from Meta" in Settings to repair it before broadcasting.',
+            'Template row is malformed locally — run "Sincronizar com a Meta" in Settings to repair it before broadcasting.',
         },
         { status: 500 },
       )
@@ -215,7 +215,7 @@ export async function POST(request: Request) {
           break
         } catch (error) {
           const errorMessage =
-            error instanceof Error ? error.message : 'Unknown error'
+            error instanceof Error ? error.message : 'Erro desconhecido'
           if (!isRecipientNotAllowedError(errorMessage)) {
             lastError = errorMessage
             break
@@ -240,7 +240,7 @@ export async function POST(request: Request) {
         results.push({
           phone: recipient.phone,
           status: 'failed',
-          error: lastError || 'Unknown error',
+          error: lastError || 'Erro desconhecido',
         })
         failedCount++
       }
@@ -256,7 +256,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Error in WhatsApp broadcast POST:', error)
     return NextResponse.json(
-      { error: 'Failed to process broadcast' },
+      { error: 'Falha ao processar a campanha' },
       { status: 500 }
     )
   }

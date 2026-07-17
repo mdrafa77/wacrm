@@ -65,8 +65,8 @@ export default function NewBroadcastPage() {
     } catch (err) {
       // Previously swallowed with console.error — the wizard would
       // just no-op, leaving the user confused. Surface the reason.
-      const message = err instanceof Error ? err.message : 'Broadcast failed';
-      console.error('Broadcast failed:', err);
+      const message = err instanceof Error ? err.message : 'Falha na campanha';
+      console.error('Falha na campanha:', err);
       toast.error(message);
     }
   }
@@ -82,7 +82,7 @@ export default function NewBroadcastPage() {
    */
   async function handleSaveDraft() {
     if (!template || !name.trim()) {
-      toast.error('Give the broadcast a name before saving a draft.');
+      toast.error('Dê um nome à campanha antes de salvar o rascunho.');
       return;
     }
     const supabase = createClient();
@@ -120,7 +120,7 @@ export default function NewBroadcastPage() {
     });
 
     if (error) {
-      toast.error(`Failed to save draft: ${error.message}`);
+      toast.error(`Falha ao salvar rascunho: ${error.message}`);
       return;
     }
     toast.success('Rascunho salvo');

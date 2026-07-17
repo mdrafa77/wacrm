@@ -70,7 +70,7 @@ export default function SettingsPage() {
           Settings
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Everything in one place — your account and your workspace. Pick a
+          Tudo em um só lugar — sua conta e seu espaço de trabalho. Escolha uma
           section to manage it.
         </p>
       </div>

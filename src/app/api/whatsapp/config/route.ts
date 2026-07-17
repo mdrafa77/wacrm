@@ -104,7 +104,7 @@ export async function GET() {
         {
           connected: false,
           reason: 'no_config',
-          message: 'No WhatsApp configuration saved yet. Fill in the form and click Save Configuration.',
+          message: 'No WhatsApp configuration saved yet. Fill in the form and click Salvar configuração.',
         },
         { status: 200 }
       )
@@ -137,7 +137,7 @@ export async function GET() {
       })
       return NextResponse.json({ connected: true, phone_info: phoneInfo })
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Unknown Meta API error'
+      const message = err instanceof Error ? err.message : 'Erro desconhecido da API da Meta'
       console.error('[whatsapp/config GET] Meta API verification failed:', message)
       return NextResponse.json(
         {
@@ -151,7 +151,7 @@ export async function GET() {
   } catch (error) {
     console.error('Error in WhatsApp config GET:', error)
     return NextResponse.json(
-      { connected: false, reason: 'unknown', message: 'Internal server error' },
+      { connected: false, reason: 'unknown', message: 'Erro interno do servidor' },
       { status: 500 }
     )
   }
@@ -243,7 +243,7 @@ export async function POST(request: Request) {
         accessToken: access_token,
       })
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Unknown Meta API error'
+      const message = err instanceof Error ? err.message : 'Erro desconhecido da API da Meta'
       console.error('Meta API verification failed during save:', message)
       return NextResponse.json(
         { error: `Meta API error: ${message}` },
@@ -319,7 +319,7 @@ export async function POST(request: Request) {
           registeredAt = new Date().toISOString()
         } catch (err) {
           registrationError =
-            err instanceof Error ? err.message : 'Unknown Meta API error'
+            err instanceof Error ? err.message : 'Erro desconhecido da API da Meta'
           console.error('Phone number /register failed:', registrationError)
           // We deliberately fall through and still save the row so the
           // user can retry without re-entering everything. The UI
@@ -395,7 +395,7 @@ export async function POST(request: Request) {
       if (insertError) {
         console.error('Error inserting whatsapp_config:', insertError)
         return NextResponse.json(
-          { error: 'Failed to save configuration' },
+          { error: 'Falha ao salvar a configuração' },
           { status: 500 }
         )
       }
@@ -427,7 +427,7 @@ export async function POST(request: Request) {
     })
   } catch (error) {
     console.error('Error in WhatsApp config POST:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ error: 'Erro interno do servidor' }, { status: 500 })
   }
 }
 
@@ -475,6 +475,6 @@ export async function DELETE() {
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Error in WhatsApp config DELETE:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ error: 'Erro interno do servidor' }, { status: 500 })
   }
 }

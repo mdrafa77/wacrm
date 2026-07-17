@@ -40,7 +40,7 @@ export function SessionsCard() {
       }
       window.location.href = '/login';
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Unknown error';
+      const msg = err instanceof Error ? err.message : 'Erro desconhecido';
       toast.error(msg);
     } finally {
       setSigningOut(false);
@@ -56,7 +56,7 @@ export function SessionsCard() {
             Active sessions
           </CardTitle>
           <CardDescription className="text-muted-foreground">
-            Sign out of every device where you&apos;re logged in — including
+            Saia de todos os dispositivos em que você está conectado — incluindo
             this one. Useful if you lost a laptop or shared your password.
           </CardDescription>
         </CardHeader>
@@ -67,7 +67,7 @@ export function SessionsCard() {
             onClick={() => setOpen(true)}
           >
             <LogOut className="size-4" />
-            Sign out of all devices
+            Sair de todos os dispositivos
           </Button>
         </CardContent>
       </Card>
@@ -98,7 +98,7 @@ export function SessionsCard() {
                   Signing out…
                 </>
               ) : (
-                'Sign out everywhere'
+                'Sair de todos os dispositivos'
               )}
             </Button>
           </DialogFooter>

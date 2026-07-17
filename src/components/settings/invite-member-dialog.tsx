@@ -6,7 +6,7 @@
 // Two-step modal:
 //   1. Form  — role + expiry + optional label → POST creates the invite.
 //   2. Result — the share URL, returned ONCE. Copy-to-clipboard, plus a
-//              "Send via WhatsApp" deep link that pre-fills wa.me with
+//              "Enviar pelo WhatsApp" deep link that pre-fills wa.me with
 //              a friendly message containing the URL.
 //
 // The plaintext token is server-stored only as a SHA-256 hash, so once
@@ -191,7 +191,7 @@ export function InviteMemberDialog({
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2 text-popover-foreground">
                 <Sparkles className="size-4 text-primary" />
-                Invite created
+                Convite criado
               </DialogTitle>
               <DialogDescription className="text-muted-foreground">
                 Share this link with your new teammate. They&apos;ll be able
@@ -231,7 +231,7 @@ export function InviteMemberDialog({
                   intro, amber-200 for the body. */}
               <div className="rounded-md border border-amber-500/50 bg-amber-500/15 px-3 py-2 text-xs text-amber-200">
                 <strong className="font-semibold text-amber-100">
-                  Save this link now.
+                  Salve este link agora.
                 </strong>{' '}
                 We never store the plaintext — once you close this dialog
                 the URL is gone. To re-share, revoke this invite and create
@@ -254,7 +254,7 @@ export function InviteMemberDialog({
                 })}
               >
                 <MessageCircle className="size-4" />
-                Send via WhatsApp
+                Enviar pelo WhatsApp
               </a>
             </div>
 
@@ -272,7 +272,7 @@ export function InviteMemberDialog({
             <DialogHeader>
               <DialogTitle className="text-popover-foreground">Convidar colega de equipe</DialogTitle>
               <DialogDescription className="text-muted-foreground">
-                Generate a one-time invite link. Share it via WhatsApp,
+                Gere um link de convite de uso único. Compartilhe pelo WhatsApp,
                 Slack, or any channel you like — no email service required.
               </DialogDescription>
             </DialogHeader>

@@ -530,7 +530,7 @@ export function MessageComposer({
             onKeyDown={handleKeyDown}
             placeholder={
               readOnly
-                ? "Read-only — viewers can browse but not reply"
+                ? "Somente leitura — visualizadores podem consultar, mas não responder"
                 : sessionExpired
                   ? "Session expired - use a template"
                   : "Type a message... (Shift+Enter for new line)"

@@ -208,7 +208,7 @@ export default function AutomationsPage() {
           </div>
           <p className="mt-3 text-sm font-medium text-foreground">Nenhuma automação ainda</p>
           <p className="mt-1 text-xs text-muted-foreground">
-            Pick a template above or create one from scratch.
+            Escolha um modelo acima ou crie uma automação do zero.
           </p>
         </div>
       ) : (
